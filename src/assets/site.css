@@ -1,4 +1,9 @@
 /* New Life Tabernacle — styles */
+/* base reset (the preview host supplied this; the live site needs its own) */
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
 /* Layout: white pages and true-black bands; burgundy accents on white, gold accents on black, photography-led, set in the logo's geometric sans; the logo itself is the only ornament */
 :root{
   --bg:#FFFFFF; --surface:#F7F7F7; --ink:#0A0A0A; --ink-2:#5A5A5A; --rule:rgba(10,10,10,.12);
@@ -781,3 +786,10 @@ section.s:not(.night)+section.s:not(.night)>.wrap::before{content:none}
 .brand .bt{font-weight:600;letter-spacing:.24em;font-size:12px}
 .intro span{font-weight:600}
 .h-kick b{font-weight:700}
+
+/* hero sized to the viewport so “we believe God.” sits above the fold */
+.hero .wrap{padding-block:clamp(28px,5.5vh,72px) clamp(28px,4.5vh,56px);gap:clamp(18px,3vh,40px)}
+.hero h1{font-size:clamp(72px,min(14.6vw,22.5svh),238px)}
+.h-row{padding-top:clamp(16px,2.6vh,28px)}
+@media(max-height:700px) and (min-width:861px){.hero h1{font-size:clamp(64px,min(13vw,21svh),200px)}}
+.pastors.band-grey{background:var(--band-grey)}
