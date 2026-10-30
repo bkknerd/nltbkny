@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "name": "Archbishop Eric R. Figueroa Sr.",
+      "short_name": "Archbishop Figueroa",
+      "role": "Founder and Senior Pastor",
+      "bio": "A Brooklyn native holding doctorates in Divinity and Theology, Archbishop Figueroa founded New Life Tabernacle in 1983 and was consecrated Bishop in 1998. He is Metropolitan Archbishop and Presiding Prelate of New Life Covenant Fellowship, founded the Family Life Development Center, and recorded *He’s a Rock* with the Mass Choir. His wife, Doreen, has served beside him from the beginning.",
+      "instagram": "archbishoperfigueroa",
+      "photo": "/images/uploads/archbishop-figueroa.webp"
+    },
+    {
+      "name": "Pastor Eric Figueroa Jr.",
+      "short_name": "Pastor Eric Jr.",
+      "role": "Pastor",
+      "bio": "Raised in this house, Pastor Figueroa Jr. serves alongside his father and carries the vision of New Life Tabernacle to a new generation.",
+      "instagram": "ericfigueroajr",
+      "photo": "/images/uploads/pastor-eric-jr.webp"
+    },
+    {
+      "name": "Pastor Timiney Figueroa",
+      "short_name": "Pastor Timiney",
+      "role": "Pastor",
+      "bio": "Pastor Timiney Figueroa ministers with warmth and conviction, helping guests and members alike find their place in the church family.",
+      "instagram": "timineyfigueroa",
+      "photo": "/images/uploads/pastor-timiney.webp"
+    }
+  ]
+}

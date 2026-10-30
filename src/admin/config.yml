@@ -1,0 +1,245 @@
+# Decap CMS for New Life Tabernacle. Editors sign in at /admin with Netlify Identity.
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    update: "Update {{collection}} “{{slug}}”"
+
+# Uncomment to edit content on your computer without logging in (run `npm run cms` beside `npm start`):
+# local_backend: true
+
+site_url: https://nltbkny.netlify.app
+display_url: https://nltbkny.netlify.app
+logo_url: /favicon.svg
+media_folder: src/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: content
+    label: Website content
+    editor: { preview: false }
+    files:
+
+      - name: site
+        label: Church details
+        file: src/_data/site.json
+        fields:
+          - { name: name, label: Church name, widget: string }
+          - { name: tagline, label: Tagline, widget: string }
+          - { name: description, label: Search engine description, widget: text, hint: "One or two sentences Google shows under the site name." }
+          - { name: url, label: Website address, widget: string, hint: "e.g. https://nltbkny.org" }
+          - { name: years, label: Years on Bedford Avenue, widget: string, hint: "Shown in the hero: “43 years on Bedford Avenue”." }
+          - { name: founded, label: Year founded, widget: string }
+          - { name: address_line1, label: Street address, widget: string }
+          - { name: address_line2, label: City, state and ZIP, widget: string }
+          - { name: city, label: City, widget: string }
+          - { name: region, label: State, widget: string }
+          - { name: postal_code, label: ZIP code, widget: string }
+          - { name: phone, label: Phone, widget: string }
+          - { name: email, label: Email, widget: string }
+          - { name: instagram, label: Instagram link, widget: string }
+          - { name: instagram_handle, label: Instagram handle, widget: string }
+          - { name: facebook, label: Facebook link, widget: string }
+          - { name: facebook_handle, label: Facebook name, widget: string }
+          - { name: youtube, label: YouTube channel link, widget: string }
+          - { name: spotify, label: Spotify link, widget: string }
+          - { name: nlcf_instagram, label: Fellowship Instagram link, widget: string }
+          - { name: nlcf_instagram_handle, label: Fellowship Instagram handle, widget: string }
+          - { name: newsletter_text, label: Newsletter sign-up text, widget: string }
+
+      - name: home
+        label: Headlines and page text
+        file: src/_data/home.json
+        fields:
+          - { name: hero_line1, label: "Hero line 1", widget: string }
+          - { name: hero_line2, label: "Hero line 2", widget: string }
+          - { name: hero_line3, label: "Hero line 3 (gold italic)", widget: string }
+          - { name: hero_lead, label: Hero welcome line, widget: text }
+          - { name: hero_service_label, label: Hero service name, widget: string }
+          - { name: hero_service_time, label: Hero service time, widget: string }
+          - { name: word_heading, label: "“A word” heading", widget: string }
+          - { name: word_lead, label: "“A word” intro", widget: text }
+          - { name: events_heading, label: Events heading, widget: string }
+          - { name: watch_heading, label: Watch heading, widget: string }
+          - { name: watch_lead, label: Watch intro, widget: text }
+          - { name: pastors_heading, label: Pastors heading, widget: string }
+          - { name: pastors_lead, label: Pastors intro, widget: text }
+          - { name: attend_heading, label: Attend heading, widget: string }
+          - { name: attend_lead, label: Attend intro, widget: text }
+          - { name: hello_heading, label: Contact form heading, widget: string }
+          - { name: hello_lead, label: Contact form intro, widget: text }
+          - { name: in_person_text, label: "“nlt in-person” line", widget: string }
+          - { name: online_text, label: "“nlt online” line", widget: string }
+
+      - name: gatherings
+        label: Service times
+        file: src/_data/gatherings.json
+        fields:
+          - name: items
+            label: Gatherings
+            widget: list
+            summary: "{{fields.day}} {{fields.time}} · {{fields.label}}"
+            fields:
+              - { name: day, label: "Day (short, e.g. sun)", widget: string }
+              - { name: time, label: "Time (e.g. 12P)", widget: string }
+              - { name: label, label: Description, widget: string }
+          - { name: calendar_title, label: "“Add Sunday to your calendar” title", widget: string }
+          - { name: calendar_start, label: First Sunday start, widget: datetime, format: "YYYY-MM-DDTHH:mm", picker_utc: false }
+          - { name: calendar_end, label: First Sunday end, widget: datetime, format: "YYYY-MM-DDTHH:mm", picker_utc: false }
+          - { name: calendar_repeat_weekly, label: Repeats every week, widget: boolean, default: true }
+
+      - name: events
+        label: Coming up (events)
+        file: src/_data/events.json
+        fields:
+          - name: items
+            label: Events
+            widget: list
+            summary: "{{fields.title}} · {{fields.start}}"
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: kicker, label: "Small top-left label (e.g. New Year's Eve · 10 PM)", widget: string }
+              - { name: host, label: Hosted by, widget: string }
+              - { name: description, label: Description, widget: text }
+              - { name: color, label: Poster color, widget: select, options: [{ label: Gold, value: gold }, { label: Black, value: night }, { label: White, value: paper }, { label: Burgundy, value: wine }], default: night }
+              - { name: start, label: Starts, widget: datetime, format: "YYYY-MM-DDTHH:mm", picker_utc: false }
+              - { name: end, label: Ends, widget: datetime, format: "YYYY-MM-DDTHH:mm", picker_utc: false, required: false }
+              - { name: all_day, label: All-day event, widget: boolean, default: false }
+              - { name: repeat_weekly, label: Repeats every week, widget: boolean, default: false }
+              - { name: big, label: "Big text override (leave empty to show the date)", widget: string, required: false }
+              - { name: small, label: "Small text override (leave empty to show the month)", widget: string, required: false }
+
+      - name: watch
+        label: Watch (videos)
+        file: src/_data/watch.json
+        fields:
+          - name: featured
+            label: Featured video
+            widget: object
+            fields:
+              - { name: youtube_id, label: "YouTube video ID", widget: string, hint: "The letters after watch?v= in the YouTube link." }
+              - { name: title, label: Title, widget: string }
+              - { name: subtitle, label: Subtitle, widget: string }
+              - { name: date_label, label: Date label, widget: string }
+          - name: links
+            label: Ways to watch
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: text, label: "Text (use *asterisks* for italics)", widget: string }
+              - { name: label, label: Link label, widget: string }
+              - { name: url, label: Link, widget: string }
+          - name: videos
+            label: More videos
+            widget: list
+            summary: "{{fields.title}} · {{fields.date_label}}"
+            fields:
+              - { name: youtube_id, label: "YouTube video ID", widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: subtitle, label: Subtitle, widget: string }
+              - { name: date_label, label: Date label, widget: string }
+              - { name: color, label: Poster color, widget: select, options: [{ label: Black, value: ink }, { label: Charcoal, value: ink2 }, { label: Burgundy, value: wine }, { label: Deep red, value: wine2 }, { label: Gold, value: gold }], default: ink }
+
+      - name: pastors
+        label: Pastors
+        file: src/_data/pastors.json
+        fields:
+          - name: items
+            label: Pastors
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: name, label: Full name, widget: string }
+              - { name: short_name, label: Short name (for the tabs), widget: string }
+              - { name: role, label: Title, widget: string }
+              - { name: bio, label: "Bio (use *asterisks* for italics)", widget: text }
+              - { name: instagram, label: "Instagram username (no @)", widget: string, required: false }
+              - { name: photo, label: "Portrait (tall photo, at least 800 × 1000)", widget: image }
+
+      - name: word
+        label: A word for today (verses)
+        file: src/_data/word.json
+        fields:
+          - { name: default_mood, label: Mood shown first, widget: string }
+          - { name: translation, label: Translation label, widget: string, default: KJV }
+          - name: moods
+            label: Moods
+            widget: list
+            summary: "{{fields.mood}}"
+            fields:
+              - { name: mood, label: "Mood (lowercase, e.g. anxious)", widget: string }
+              - name: verses
+                label: Verses
+                widget: list
+                summary: "{{fields.ref}}"
+                fields:
+                  - { name: ref, label: Reference, widget: string }
+                  - { name: text, label: Verse text, widget: text }
+
+      - name: attend
+        label: Attend (first visit)
+        file: src/_data/attend.json
+        fields:
+          - { name: getting_here, label: Getting here paragraphs, widget: list, field: { name: text, label: Paragraph, widget: text } }
+          - name: first_sunday
+            label: Your first Sunday tips
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: Tip, widget: string }
+              - { name: text, label: Detail, widget: text }
+
+      - name: fellowship
+        label: New Life Covenant Fellowship
+        file: src/_data/fellowship.json
+        fields:
+          - { name: established, label: Established line, widget: string }
+          - { name: name, label: Name, widget: string }
+          - { name: description, label: Description, widget: text }
+          - { name: website, label: Website, widget: string }
+          - { name: email, label: Email, widget: string }
+          - { name: instagram, label: Instagram link, widget: string }
+          - { name: instagram_handle, label: Instagram handle, widget: string }
+          - { name: facebook, label: Facebook link, widget: string }
+          - name: mottos
+            label: Mottos
+            widget: list
+            fields:
+              - { name: lead, label: First part, widget: string }
+              - { name: accent, label: Highlighted part, widget: string }
+          - { name: video_label, label: Video link label, widget: string, required: false }
+          - { name: video_url, label: Video link, widget: string, required: false }
+
+      - name: community
+        label: Family Life Development Center
+        file: src/_data/community.json
+        fields:
+          - { name: name, label: Name, widget: string }
+          - { name: lead, label: Intro, widget: text }
+          - name: services
+            label: Services
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: name, label: Service, widget: string }
+              - { name: text, label: Description, widget: string }
+
+      - name: give
+        label: Giving
+        file: src/_data/give.json
+        fields:
+          - { name: verse, label: Verse, widget: text }
+          - { name: reference, label: Reference, widget: string }
+          - name: methods
+            label: Ways to give
+            widget: list
+            summary: "{{fields.name}} · {{fields.handle}}"
+            fields:
+              - { name: name, label: Method, widget: string }
+              - { name: handle, label: "Handle, email or tag", widget: string }
+              - { name: note, label: Note, widget: string, required: false }
+              - { name: link_label, label: Link label, widget: string, required: false }
+              - { name: link_url, label: Link, widget: string, required: false }
+          - { name: mail_title, label: In person / mail heading, widget: string }
+          - { name: mail_text, label: In person / mail text, widget: text }

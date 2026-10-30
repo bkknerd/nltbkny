@@ -1,0 +1,24 @@
+{
+  "getting_here": [
+    "The B49 bus runs along Bedford Avenue, and Franklin Av and Nostrand Av stations are a short walk.",
+    "Street parking on Bedford and the nearby blocks fills up on Sunday, so give yourself a few extra minutes."
+  ],
+  "first_sunday": [
+    {
+      "title": "arrive by 11:45.",
+      "text": "Greeters meet you at the door and help you find a seat."
+    },
+    {
+      "title": "wear what’s comfortable.",
+      "text": "You’ll see suits and church hats next to jeans and sneakers."
+    },
+    {
+      "title": "bring the kids.",
+      "text": "Children are welcome in every service."
+    },
+    {
+      "title": "stay a while.",
+      "text": "Praise, prayer and the preached Word. Brooklyn worship is never in a hurry."
+    }
+  ]
+}

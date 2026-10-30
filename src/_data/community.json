@@ -1,0 +1,26 @@
+{
+  "name": "Family Life Development Center",
+  "lead": "Founded by Archbishop Figueroa in 1998, our nonprofit community development agency serves any Brooklyn resident, member or not.",
+  "services": [
+    {
+      "name": "counseling",
+      "text": "For individuals, couples and families"
+    },
+    {
+      "name": "college prep",
+      "text": "Preparatory classes for students heading to college"
+    },
+    {
+      "name": "scholarships",
+      "text": "Awards that help young people go further in school"
+    },
+    {
+      "name": "senior programs",
+      "text": "Companionship, activities and support for our elders"
+    },
+    {
+      "name": "life skills",
+      "text": "Budgeting, work readiness and everyday decisions"
+    }
+  ]
+}

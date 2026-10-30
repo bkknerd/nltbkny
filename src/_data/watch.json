@@ -1,0 +1,71 @@
+{
+  "featured": {
+    "youtube_id": "ob4c3Ipfk5U",
+    "title": "NLT Sunday Service",
+    "subtitle": "New Life Tabernacle Brooklyn",
+    "date_label": "Latest · Oct 11, 2026"
+  },
+  "links": [
+    {
+      "title": "live every Sunday",
+      "text": "12P on Facebook Live · @NL Tbkny",
+      "label": "watch on facebook",
+      "url": "https://www.facebook.com/newlifetabbkny"
+    },
+    {
+      "title": "43rd anniversary",
+      "text": "October 25, 2026 · 2 hr 52 min",
+      "label": "watch the service",
+      "url": "https://www.facebook.com/newlifetabbkny"
+    },
+    {
+      "title": "every service",
+      "text": "New Life Tabernacle Brooklyn on YouTube",
+      "label": "open the channel",
+      "url": "https://www.youtube.com/channel/UCCfGhoUD-u9rh9568HLF3Lg"
+    },
+    {
+      "title": "the Mass Choir",
+      "text": "*He’s a Rock* and more, on Spotify",
+      "label": "listen",
+      "url": "https://open.spotify.com/search/Bishop%20Eric%20R.%20Figueroa"
+    }
+  ],
+  "videos": [
+    {
+      "youtube_id": "C_xVi6teU08",
+      "title": "Candlelight Experience",
+      "subtitle": "Sunday Service",
+      "date_label": "Dec 21, 2025",
+      "color": "wine"
+    },
+    {
+      "youtube_id": "qliaJmucLi4",
+      "title": "Empowerment Conference 2026",
+      "subtitle": "New Life Covenant Fellowship",
+      "date_label": "Mar 14, 2026",
+      "color": "gold"
+    },
+    {
+      "youtube_id": "Sy7Y0wokaGQ",
+      "title": "16th Holy Convocation",
+      "subtitle": "Prophetess Barbara Calloway",
+      "date_label": "Nov 16, 2025",
+      "color": "ink"
+    },
+    {
+      "youtube_id": "-QRZWi_ZiLQ",
+      "title": "NLT Live",
+      "subtitle": "Sunday worship",
+      "date_label": "Sep 1, 2024",
+      "color": "wine2"
+    },
+    {
+      "youtube_id": "FRYS9oKweQo",
+      "title": "From the NLT archive",
+      "subtitle": "New Life Tabernacle Brooklyn",
+      "date_label": "Archive",
+      "color": "ink2"
+    }
+  ]
+}

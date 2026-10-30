@@ -1,0 +1,23 @@
+{
+  "items": [
+    {
+      "day": "sun",
+      "time": "12P",
+      "label": "Sunday Worship, in person and on Facebook Live"
+    },
+    {
+      "day": "wed",
+      "time": "6A",
+      "label": "Morning Prayer"
+    },
+    {
+      "day": "wed",
+      "time": "6P",
+      "label": "Evening Prayer"
+    }
+  ],
+  "calendar_title": "Sunday Worship at New Life Tabernacle",
+  "calendar_start": "2026-11-01T12:00",
+  "calendar_end": "2026-11-01T14:00",
+  "calendar_repeat_weekly": true
+}

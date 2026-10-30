@@ -1,0 +1,19 @@
+{
+  "name": "nltbkny-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "New Life Tabernacle website: Eleventy + Decap CMS, deployed on Netlify",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "cms": "npx decap-server"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "markdown-it": "^14.1.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "type": "module"
+}

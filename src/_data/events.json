@@ -1,0 +1,54 @@
+{
+  "items": [
+    {
+      "title": "Convocation Live Recording",
+      "kicker": "Live recording",
+      "host": "New Life Covenant Fellowship",
+      "description": "Rehearsals are underway. Come sing, come worship, come be on the record.",
+      "color": "gold",
+      "start": "2026-11-21T00:00",
+      "all_day": true,
+      "repeat_weekly": false,
+      "big": "",
+      "small": ""
+    },
+    {
+      "title": "Watch Night",
+      "kicker": "New Year's Eve · 10 PM",
+      "host": "New Life Tabernacle",
+      "description": "Pray out the old year and worship in the new with the New Life family.",
+      "color": "night",
+      "start": "2026-12-31T22:00",
+      "end": "2027-01-01T01:00",
+      "all_day": false,
+      "repeat_weekly": false,
+      "big": "",
+      "small": ""
+    },
+    {
+      "title": "Wednesday Prayer",
+      "kicker": "Every week · 6 AM + 6 PM",
+      "host": "New Life Tabernacle",
+      "description": "Come before work or after. The church gathers to pray for the city and for each other.",
+      "color": "paper",
+      "start": "2026-11-04T06:00",
+      "end": "2026-11-04T07:00",
+      "all_day": false,
+      "repeat_weekly": true,
+      "big": "Wed",
+      "small": "weekly"
+    },
+    {
+      "title": "Palm Monday",
+      "kicker": "Holy Week",
+      "host": "New Life Covenant Fellowship",
+      "description": "Seven churches, seven praise teams and the seven last words of Jesus Christ.",
+      "color": "wine",
+      "start": "2027-03-22T00:00",
+      "all_day": true,
+      "repeat_weekly": false,
+      "big": "",
+      "small": ""
+    }
+  ]
+}

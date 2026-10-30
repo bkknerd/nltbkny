@@ -1,0 +1,364 @@
+---
+permalink: /index.html
+---
+{%- set addr = site.address_line1 + ", " + site.address_line2 -%}
+{%- set first = word.moods | first -%}
+{%- for m in word.moods %}{% if m.mood == word.default_mood %}{% set first = m %}{% endif %}{% endfor -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{{ site.name }} | Brooklyn, NY</title>
+<meta name="description" content="{{ site.description }}">
+<link rel="canonical" href="{{ site.url }}/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ site.name }}">
+<meta property="og:description" content="{{ site.description }}">
+<meta property="og:url" content="{{ site.url }}/">
+{%- if pastors.items[0].photo %}
+<meta property="og:image" content="{{ site.url }}{{ pastors.items[0].photo }}">{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Church",
+  "name": {{ site.name | dump | safe }},
+  "url": {{ site.url | dump | safe }},
+  "telephone": {{ site.phone | dump | safe }},
+  "email": {{ site.email | dump | safe }},
+  "foundingDate": {{ site.founded | dump | safe }},
+  "address": {"@type": "PostalAddress", "streetAddress": {{ site.address_line1 | dump | safe }}, "addressLocality": {{ site.city | dump | safe }}, "addressRegion": {{ site.region | dump | safe }}, "postalCode": {{ site.postal_code | dump | safe }}, "addressCountry": "US"},
+  "sameAs": [{{ site.instagram | dump | safe }}, {{ site.facebook | dump | safe }}, {{ site.youtube | dump | safe }}],
+  "employee": [{% for p in pastors.items %}{"@type": "Person", "name": {{ p.name | dump | safe }}, "jobTitle": {{ p.role | dump | safe }}}{% if not loop.last %}, {% endif %}{% endfor %}]
+}
+</script>
+<script>/* Netlify Identity: finish CMS invites and password resets that land on the homepage */
+if(/(invite|recovery|confirmation|email_change)_token|access_token/.test(location.hash)){var s=document.createElement('script');s.src='https://identity.netlify.com/v1/netlify-identity-widget.js';s.onload=function(){netlifyIdentity.on('init',function(u){if(!u)netlifyIdentity.on('login',function(){location.href='/admin/'})});netlifyIdentity.init()};document.head.appendChild(s)}</script>
+</head>
+<body>
+<div class="intro" aria-hidden="true"><div><svg viewBox="0 0 100 100" aria-hidden="true"><defs><clipPath id="nltc2"><circle cx="50" cy="50" r="46"/></clipPath></defs><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3.4" pathLength="1"/><g fill="currentColor" clip-path="url(#nltc2)"><rect x="22.6" y="18.2" width="6.6" height="37.3"/><polygon points="22.6,18.2 29.4,18.2 52.2,55.5 45.4,55.5"/><rect x="45.6" y="18.2" width="6.6" height="37.3"/><rect x="58.8" y="18.2" width="6.5" height="37.3"/><rect x="58.8" y="48.9" width="26.2" height="6.6"/><rect x="45.6" y="60.9" width="6.6" height="40"/><rect x="58.8" y="60.9" width="6.5" height="40"/><rect x="58.8" y="60.9" width="26.2" height="6.6"/></g></svg><span>New Life Tabernacle</span></div></div>
+<div class="cur" id="cur" aria-hidden="true"><b></b></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="New Life Tabernacle home">
+      <svg class="mono" viewBox="0 0 100 100" aria-hidden="true"><defs><clipPath id="nltc1"><circle cx="50" cy="50" r="46"/></clipPath></defs><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3.4"/><g fill="currentColor" clip-path="url(#nltc1)"><rect x="22.6" y="18.2" width="6.6" height="37.3"/><polygon points="22.6,18.2 29.4,18.2 52.2,55.5 45.4,55.5"/><rect x="45.6" y="18.2" width="6.6" height="37.3"/><rect x="58.8" y="18.2" width="6.5" height="37.3"/><rect x="58.8" y="48.9" width="26.2" height="6.6"/><rect x="45.6" y="60.9" width="6.6" height="40"/><rect x="58.8" y="60.9" width="6.5" height="40"/><rect x="58.8" y="60.9" width="26.2" height="6.6"/></g></svg>
+      <span class="bt">New Life Tabernacle</span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menu</button>
+    <nav class="main" id="mainNav" aria-label="Main">
+      <a href="#word">A Word</a>
+      <a href="#events">Coming up</a>
+      <a href="#watch">Watch</a>
+      <a href="#leadership">Pastors</a>
+      <a href="#visit">Attend</a>
+      <a href="#fellowship">Fellowship</a>
+      <a class="btn btn-ink" href="#give">Give</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="h1">
+    <figure class="ph bgm" data-photo="hero"></figure>
+    <canvas id="rays" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <p class="h-kick"><b>{{ site.years }}</b> years on Bedford Avenue, Brooklyn</p>
+      <h1 id="h1"><span class="l"><span>{{ home.hero_line1 }}</span></span><span class="l"><span>{{ home.hero_line2 }}</span></span><span class="l"><span>{{ home.hero_line3 }}</span></span></h1>
+      <div class="h-row">
+        <p class="lead"><strong>{{ site.tagline }}</strong> {{ home.hero_lead }}</p>
+        <div class="h-next"><span>{{ home.hero_service_label }}</span><b>{{ home.hero_service_time }}</b><span>{{ site.address_line1 }}</span></div>
+        <div class="ctas"><a class="tlink" href="#word">( a word for today )</a><a class="tlink" href="#visit">( where to find us )</a><a class="tlink" href="#watch">( watch online )</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="word" id="word" aria-labelledby="wordH">
+    <div class="wrap w-grid">
+      <div class="w-ask">
+        <h2 id="wordH">{{ home.word_heading }}</h2>
+        <p class="lead">{{ home.word_lead }}</p>
+        <div class="moods" role="group" aria-label="Choose a feeling">{% for m in word.moods %}<button type="button" aria-pressed="{{ 'true' if m.mood == first.mood else 'false' }}" data-m="{{ m.mood }}">{{ m.mood }}</button>{% endfor %}</div>
+        <form class="own" id="ownForm" novalidate>
+          <label class="sr" for="ownIn">Or describe how you feel</label>
+          <input id="ownIn" placeholder="or say it in your own words" maxlength="200" autocomplete="off">
+          <button class="tlink" type="submit" id="ownGo">( find a word )</button>
+        </form>
+      </div>
+      <figure class="w-card" aria-live="polite">
+        <figcaption class="w-for" id="wFor">a word for when you feel <b>{{ first.mood }}</b></figcaption>
+        <blockquote class="w-verse" id="wVerse">{{ first.verses[0].text }}</blockquote>
+        <p class="w-ref"><span id="wRef">{{ first.verses[0].ref }}</span> · {{ word.translation }}</p>
+        <div class="w-act">
+          <button class="tlink" type="button" id="wNext">( another verse )</button>
+          <button class="tlink" type="button" id="wCopy">( copy )</button>
+          <a class="tlink" id="wRead" href="https://www.biblegateway.com/passage/?search={{ first.verses[0].ref | replace(r/:.*$/, '') | urlencode }}&amp;version=KJV" target="_blank" rel="noopener">( read the chapter )</a>
+        </div>
+        <p class="w-pray">Would you like someone to pray with you? <a href="#hello">Send us a note</a>.</p>
+      </figure>
+    </div>
+  </section>
+
+  <section class="gather band-wine" aria-labelledby="gH">
+    <div class="wrap">
+      <div class="g-top">
+        <h2 id="gH">gatherings</h2>
+        <div class="gx">
+          <a class="tlink" target="_blank" rel="noopener" href="{{ gatherings.calendar_title | gcal(gatherings.calendar_start, gatherings.calendar_end, false, gatherings.calendar_repeat_weekly, addr) }}">( add Sunday to your calendar )</a>
+          <a class="tlink" href="#visit">( get directions )</a>
+        </div>
+      </div>
+      <div class="g-times">
+        {%- for g in gatherings.items %}
+        <div class="gt"><b>{{ g.day }} <em>{{ g.time }}</em></b><span>{{ g.label }}</span></div>
+        {%- if not loop.last %}
+        <i aria-hidden="true">//</i>{% endif %}
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="events" aria-labelledby="evH">
+    <div class="wrap">
+      <div class="sh">
+        <h2 id="evH">{{ home.events_heading }}</h2>
+        <p class="lead">Follow <a href="{{ site.instagram }}" target="_blank" rel="noopener">{{ site.instagram_handle }}</a> and <a href="{{ site.nlcf_instagram }}" target="_blank" rel="noopener">{{ site.nlcf_instagram_handle }}</a> for the latest.</p>
+      </div>
+      <div class="posters">
+        {%- for e in events.items %}
+        <article class="poster p-{{ e.color or 'night' }}">
+          <p class="pk"><span>{{ e.kicker }}</span><span>{{ e.host }}</span></p>
+          <p class="pd"><b>{{ e.big or (e.start | day) }}</b><span>{{ e.small or (e.start | mon) }}</span></p>
+          <div><h3>{{ e.title }}</h3><p>{{ e.description }}</p>
+          <a class="tlink" target="_blank" rel="noopener" href="{{ e.title | gcal(e.start, e.end, e.all_day, e.repeat_weekly, addr) }}">( add to calendar )</a></div>
+        </article>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="s night" id="watch" aria-labelledby="watchH">
+    <div class="wrap">
+      <div class="sh">
+        <h2 id="watchH">{{ home.watch_heading }}</h2>
+        <p class="lead">{{ home.watch_lead | nbsp }}</p>
+      </div>
+      <div class="wgrid">
+        {%- set f = watch.featured %}
+        <a class="ph vid vp feat t-ink" data-yt="{{ f.youtube_id }}" href="https://www.youtube.com/watch?v={{ f.youtube_id }}" target="_blank" rel="noopener" aria-label="Play {{ f.title }}">
+          <span class="vd">{{ f.date_label }}</span><span class="play" aria-hidden="true"><svg width="16" height="18" viewBox="0 0 24 26"><path d="M3 2 L22 13 L3 24 Z" fill="#0A0A0A"/></svg></span>
+          <span class="vt"><b>{{ f.title }}</b><span>{{ f.subtitle }}</span></span>
+        </a>
+        <div class="live">
+          {%- for l in watch.links %}
+          <div class="lv"><h3>{{ l.title }}</h3><p>{{ l.text | nbsp | md | safe }}</p><a class="tlink" href="{{ l.url }}" target="_blank" rel="noopener">( {{ l.label }} )</a></div>
+          {%- endfor %}
+        </div>
+      </div>
+      <div class="vrow" aria-label="More videos">
+        {%- for v in watch.videos %}
+        <a class="ph vid vp t-{{ v.color or 'ink' }}" data-yt="{{ v.youtube_id }}" href="https://www.youtube.com/watch?v={{ v.youtube_id }}" target="_blank" rel="noopener" aria-label="Play {{ v.title }}">
+          <span class="vd">{{ v.date_label }}</span><span class="play" aria-hidden="true"><svg width="16" height="18" viewBox="0 0 24 26"><path d="M3 2 L22 13 L3 24 Z" fill="#0A0A0A"/></svg></span>
+          <span class="vt"><b>{{ v.title }}</b><span>{{ v.subtitle }}</span></span>
+        </a>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="pastors" id="leadership" aria-labelledby="leadH">
+    <div class="wrap">
+      <div class="sh">
+        <h2 id="leadH">{{ home.pastors_heading }}</h2>
+        <p class="lead">{{ home.pastors_lead }}</p>
+      </div>
+    </div>
+    <div class="ptrack" id="ptrack">
+      <div class="ppin">
+        {%- for p in pastors.items %}
+        <article class="pitem{% if loop.first %} on{% endif %}" data-i="{{ loop.index0 }}">
+          <figure class="ph pfig">{% if p.photo %}<img src="{{ p.photo }}" alt="{{ p.name }}" width="800" height="1000"{% if not loop.first %} loading="lazy"{% endif %}>{% endif %}</figure>
+          <div class="pinfo">
+            <p class="prole">{{ p.role }}</p>
+            <h3>{{ p.name }}</h3>
+            <p class="pbio">{{ p.bio | md | safe }}</p>
+            {%- if p.instagram %}
+            <a class="tlink" href="https://www.instagram.com/{{ p.instagram }}" target="_blank" rel="noopener">( @{{ p.instagram }} )</a>{% endif %}
+          </div>
+        </article>
+        {%- endfor %}
+        <nav class="pnav" aria-label="Pastors">{% for p in pastors.items %}<button type="button" data-go="{{ loop.index0 }}"{% if loop.first %} aria-current="true"{% endif %}><span>{{ p.short_name or p.name }}</span><i></i></button>{% endfor %}</nav>
+      </div>
+    </div>
+  </section>
+
+  <section class="s attend band-grey" id="visit" aria-labelledby="visitH">
+    <div class="wrap">
+      <div class="at-top">
+        <h2 id="visitH">{{ home.attend_heading }}</h2>
+        <p class="lead">{{ home.attend_lead }}</p>
+      </div>
+      <div class="at-cols">
+        <div class="atc">
+          <h3>where</h3>
+          <p class="addr">{{ site.address_line1 }}<br>{{ site.address_line2 }}</p>
+          <div class="row" style="gap:2px 24px">
+            <a class="tlink" href="{{ addr | mapsUrl }}" target="_blank" rel="noopener">( get directions )</a>
+            <button class="tlink" type="button" data-copy="{{ addr }}" style="background:none;border:0;cursor:pointer">( copy address )</button>
+          </div>
+        </div>
+        <div class="atc">
+          <h3>getting here</h3>
+          {%- for p in attend.getting_here %}
+          <p>{{ p }}</p>{% endfor %}
+        </div>
+        <div class="atc">
+          <h3>reach us</h3>
+          <p><a href="tel:{{ site.phone | tel }}">{{ site.phone }}</a><button class="copy-btn" type="button" data-copy="{{ site.phone }}">Copy</button></p>
+          <p><a href="mailto:{{ site.email }}">{{ site.email }}</a><button class="copy-btn" type="button" data-copy="{{ site.email }}">Copy</button></p>
+        </div>
+      </div>
+      <h3 class="first-h">your first Sunday</h3>
+      <div class="first">
+        {%- for t in attend.first_sunday %}
+        <div><b>{{ t.title }}</b><p>{{ t.text }}</p></div>{% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="s band-night" id="fellowship" aria-labelledby="nlcfH">
+    <div class="wrap nlcf">
+      <div>
+        <span class="since">{{ fellowship.established }}</span>
+        <h2 id="nlcfH">{{ fellowship.name }}</h2>
+        <p class="lead">{{ fellowship.description }}</p>
+        <div class="info">
+          <div><b>Website</b><span><a href="{{ fellowship.website }}" target="_blank" rel="noopener">{{ fellowship.website | replace("https://", "") | replace("www.", "") }}</a></span></div>
+          <div><b>Email</b><span><a href="mailto:{{ fellowship.email }}">{{ fellowship.email }}</a><button class="copy-btn" type="button" data-copy="{{ fellowship.email }}">Copy</button></span></div>
+          <div><b>Follow</b><span><a href="{{ fellowship.instagram }}" target="_blank" rel="noopener">{{ fellowship.instagram_handle }}</a> · <a href="{{ fellowship.facebook }}" target="_blank" rel="noopener">Facebook</a></span></div>
+        </div>
+      </div>
+      <div>
+        <div class="mottos">
+          {%- for m in fellowship.mottos %}
+          <blockquote>{{ m.lead }} <span>{{ m.accent }}</span></blockquote>{% endfor %}
+        </div>
+        <div class="row nl-links" style="gap:4px 28px">
+          <a class="tlink" href="#events">( fellowship events )</a>
+          {%- if fellowship.video_url %}
+          <a class="tlink" href="{{ fellowship.video_url }}" target="_blank" rel="noopener">( {{ fellowship.video_label }} )</a>{% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s fldc2" id="community" aria-labelledby="fldcH">
+    <div class="wrap">
+      <div class="f-top">
+        <div>
+          <h2 id="fldcH">{{ community.name }}</h2>
+          <p class="lead">{{ community.lead }}</p>
+        </div>
+        <a class="tlink" href="#hello">( ask about a program )</a>
+      </div>
+      <ul class="f-list">
+        {%- for c in community.services %}
+        <li><b>{{ c.name }}</b><span>{{ c.text }}</span></li>{% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <section class="s night" id="give" aria-labelledby="giveH">
+    <div class="wrap give">
+      <div>
+        <h2 id="giveH" class="give-h">give</h2>
+        <blockquote class="verse">{{ give.verse }}</blockquote>
+        <span class="vref">{{ give.reference }}</span>
+      </div>
+      <div class="gways">
+        {%- for g in give.methods %}
+        <div class="gw">
+          <div><h3>{{ g.name }}</h3><p class="hd">{{ g.handle }}</p>{% if g.note %}<small>{{ g.note }}</small>{% endif %}</div>
+          <div class="ga">{% if g.link_url %}<a class="tlink" href="{{ g.link_url }}" target="_blank" rel="noopener">( {{ g.link_label }} )</a>{% endif %}<button class="copy-btn" type="button" data-copy="{{ g.handle }}">Copy</button></div>
+        </div>
+        {%- endfor %}
+        <div class="gw">
+          <div><h3>{{ give.mail_title }}</h3><p>{{ give.mail_text }}</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="split" aria-label="Join us">
+    <a class="sp" href="#visit">
+      <h2>nlt in-person</h2>
+      <p>{{ home.in_person_text }}</p>
+      <span class="tlink">( plan your visit )</span>
+    </a>
+    <a class="sp night" href="#watch">
+      <h2>nlt online</h2>
+      <p>{{ home.online_text }}</p>
+      <span class="tlink">( watch now )</span>
+    </a>
+  </section>
+
+  <section class="s hello band-grey" id="hello" aria-label="Say hello">
+    <div class="wrap">
+      <div class="connect">
+        <div>
+          <h2 class="hello-h">{{ home.hello_heading }}</h2>
+          <p class="lead">{{ home.hello_lead }}</p>
+        </div>
+        <form id="connectForm" name="say-hello" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="say-hello">
+          <p class="sr"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <div class="fields">
+            <label for="cName">Your name<input id="cName" name="name" required autocomplete="name"></label>
+            <label for="cContact">Email or phone<input id="cContact" name="contact" required autocomplete="email"></label>
+            <label class="full" for="cKind">I’d like to<select id="cKind" name="kind"><option>Plan a visit</option><option>Share a prayer request</option><option>Ask a question</option><option>Get involved</option></select></label>
+            <label class="full" for="cMsg">Message<textarea id="cMsg" name="message" placeholder="Tell us a little more"></textarea></label>
+            <label class="full chk" for="cPriv"><input type="checkbox" id="cPriv" name="private" value="yes"> Keep this between me and the pastoral team</label>
+          </div>
+          <button class="btn btn-ink" type="submit" id="cSend">Send</button>
+          <p class="done" id="cDone" hidden></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="night">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <h5>stay connected</h5>
+        <p>{{ site.newsletter_text }}</p>
+        <form class="news" id="newsForm" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="newsletter">
+          <p class="sr"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <label class="sr" for="nEmail">Email address</label>
+          <input id="nEmail" name="email" type="email" placeholder="you@email.com" autocomplete="email">
+          <button class="btn btn-gold" type="submit">Subscribe</button>
+        </form>
+        <p id="newsDone" hidden style="margin-top:10px;color:var(--gold-lite)"></p>
+      </div>
+      <div><h5>quick links</h5><ul><li><a href="#visit">Attend</a></li><li><a href="#watch">Watch</a></li><li><a href="#events">Coming up</a></li><li><a href="#give">Give</a></li></ul></div>
+      <div><h5>connect</h5><ul><li><a href="#leadership">Our pastors</a></li><li><a href="#fellowship">Covenant Fellowship</a></li><li><a href="{{ fellowship.website }}" target="_blank" rel="noopener">NLCF website</a></li><li><a href="#community">Family Life Center</a></li><li><a href="#hello">Say hello</a></li></ul></div>
+      <div><h5>socials</h5><ul><li><a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a></li><li><a href="{{ site.facebook }}" target="_blank" rel="noopener">Facebook</a></li><li><a href="{{ site.youtube }}" target="_blank" rel="noopener">YouTube</a></li><li><a href="{{ fellowship.instagram }}" target="_blank" rel="noopener">NLCF Instagram</a></li></ul></div>
+    </div>
+    <p class="wordmark" aria-hidden="true">nltbkny</p>
+    <div class="legal"><span>© {{ "" | year }} {{ site.name }}, Inc.</span><span>{{ addr }} · {{ site.phone }}</span></div>
+  </div>
+</footer>
+
+<script>window.NLT={moods:{{ word.moods | dump | safe }},defaultMood:{{ word.default_mood | dump | safe }}};</script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>
