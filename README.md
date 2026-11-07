@@ -10,16 +10,20 @@ Every piece of content lives in `src/_data/*.json` and is editable at **/admin**
 2. **Create the site.** In Netlify: *Add new site → Import an existing project → GitHub →* pick the repo. Netlify reads `netlify.toml`, so the build settings fill in themselves (`npm run build`, publish `_site`). Deploy.
 3. **Turn on sign-in for editors.**
    - *Project configuration → Identity → Enable Identity.*
-   - Under *Registration*, choose **Invite only**.
+   - Under *Registration*, choose **Invite only**. (If it says *Open*, anyone can create an account. Change it.)
    - Under *Services → Git Gateway*, click **Enable Git Gateway**.
-4. **Invite editors.** *Identity → Invite users*, enter their emails. They accept the email, set a password, and land in the editor at `yoursite/admin`.
+   - Under *Emails → Invitation template*, optional: change the subject to “You’re invited to edit the New Life Tabernacle website”.
+4. **Invite editors.** *Identity → Invite users*, enter their emails. They click the link in the email, choose a password, and land on the staff dashboard at `yoursite/admin`.
 5. **Forms.** The “say hello” form and the newsletter sign-up are Netlify Forms. They are detected on the first deploy. Under *Forms → Form notifications*, add an email notification so messages reach the church inbox (for example newlife1476@aol.com).
 6. **Domain.** *Domain management → Add a domain* (for example `nltbkny.org`). Then update `url` in **Church details** in the CMS, and `site_url` / `display_url` in `src/admin/config.yml`.
 
 ## Editing content
 
-- Go to `https://<your-site>/admin`, sign in, choose a section, edit, **Publish**.
-- Each publish saves to GitHub and Netlify rebuilds the site automatically (about a minute).
+- Staff go to `https://<your-site>/admin` (or **Staff sign in** at the bottom of the site) and sign in with email and password.
+- The dashboard asks “what would you like to change?” and lists every section as a tile: events, videos and service times first.
+- Each tile opens that section in the editor (`/admin/edit`). Make the change, press **Publish**. Netlify rebuilds the site in about a minute.
+- While signed in, every section of the live site shows an **Edit** button that opens the right page in the editor.
+- Forgot password: press **Sign in with email**, then **Forgot password?**.
 - **Events:** set the start date and time. The big number and month on the poster fill in from the date unless you type an override (like “Wed” / “weekly” for a weekly event). The Google Calendar link is built automatically.
 - **Videos:** paste the YouTube video ID, the part after `watch?v=` in a YouTube link.
 - **Portraits:** upload tall photos, at least 800 × 1000. They show in black and white and turn to color on hover.
@@ -32,7 +36,7 @@ npm install
 npm start          # site at http://localhost:8080
 ```
 
-To use the CMS locally without signing in, uncomment `local_backend: true` in `src/admin/config.yml`, then run `npm run cms` in a second terminal and open http://localhost:8080/admin.
+To use the CMS locally without signing in, uncomment `local_backend: true` in `src/admin/config.yml`, then run `npm run cms` in a second terminal and open http://localhost:8080/admin/edit/.
 
 ## What's where
 
@@ -42,6 +46,8 @@ To use the CMS locally without signing in, uncomment `local_backend: true` in `s
 | `src/_data/*.json` | All content (what the CMS edits) |
 | `src/assets/site.css`, `site.js` | Design and interactions |
 | `src/images/uploads/` | Photos uploaded through the CMS |
+| `src/admin/index.html` | Staff sign-in and dashboard (`/admin`) |
+| `src/admin/edit/index.html` | The editor itself (`/admin/edit`) |
 | `src/admin/config.yml` | What the CMS shows editors |
 | `netlify.toml` | Build settings, security headers, caching |
 | `eleventy.config.js` | Build setup and helpers (calendar links, dates, italics) |

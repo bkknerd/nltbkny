@@ -800,3 +800,12 @@ section.s:not(.night)+section.s:not(.night)>.wrap::before{content:none}
 .h-row{padding-top:clamp(16px,2.6vh,28px)}
 @media(max-height:700px) and (min-width:861px){.hero h1{font-size:clamp(64px,min(13vw,21svh),200px)}}
 .pastors.band-grey{background:var(--band-grey)}
+
+/* Staff editing: Edit buttons show only for people signed in to /admin */
+.legal .staff{color:inherit;opacity:.55;text-decoration:none}
+.legal .staff:hover{opacity:1;text-decoration:underline}
+.cms-on{position:relative}
+.cms-edit{position:absolute;z-index:60;top:16px;right:16px;display:inline-flex;align-items:center;padding:9px 14px;border-radius:999px;background:#0A0A0A;color:#fff!important;font:600 13px/1 var(--f-body);text-decoration:none!important;box-shadow:0 0 0 1px rgba(255,255,255,.18),0 6px 18px rgba(0,0,0,.18)}
+.cms-edit:hover{background:var(--wine)}
+.hero .cms-edit{top:96px}
+.cms-bar{position:fixed;z-index:300;left:16px;bottom:16px;padding:10px 16px;border-radius:999px;background:var(--gold-lite);color:#0A0A0A!important;font:600 13px/1 var(--f-body);text-decoration:none!important;box-shadow:0 6px 18px rgba(0,0,0,.2)}

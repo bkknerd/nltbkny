@@ -356,12 +356,17 @@ if(/(invite|recovery|confirmation|email_change)_token|access_token/.test(locatio
       <div><h5>socials</h5><ul><li><a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a></li><li><a href="{{ site.facebook }}" target="_blank" rel="noopener">Facebook</a></li><li><a href="{{ site.youtube }}" target="_blank" rel="noopener">YouTube</a></li><li><a href="{{ fellowship.instagram }}" target="_blank" rel="noopener">NLCF Instagram</a></li></ul></div>
     </div>
     <p class="wordmark" aria-hidden="true">nltbkny</p>
-    <div class="legal"><span>© {{ "" | year }} {{ site.name }}, Inc.</span><span>{{ addr }} · {{ site.phone }}</span></div>
+    <div class="legal"><span>© {{ "" | year }} {{ site.name }}, Inc.</span><span>{{ addr }} · {{ site.phone }}</span><a class="staff" href="/admin/">Staff sign in</a></div>
   </div>
 </footer>
 
 <script>window.NLT={moods:{{ word.moods | dump | safe }},defaultMood:{{ word.default_mood | dump | safe }}};</script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="/assets/site.js"></script>
+<script>/* Staff who are signed in to the editor see an Edit button on each section */
+(function(){var u;try{u=JSON.parse(localStorage.getItem('gotrue.user')||'null')}catch(e){}if(!u)return;
+var map=[['.hero','home','headlines'],['#word','word','verses'],['#watch','watch','videos'],['.gather','gatherings','service times'],['#visit','attend','first visit'],['#events','events','events'],['#leadership','pastors','pastors'],['#fellowship','fellowship','fellowship'],['#community','community','Family Life Center'],['#give','give','giving'],['#hello','home','page text'],['footer','site','church details']];
+map.forEach(function(m){var el=document.querySelector(m[0]);if(!el)return;var a=document.createElement('a');a.className='cms-edit';a.href='/admin/edit/#/collections/content/entries/'+m[1];a.textContent='Edit '+m[2];el.classList.add('cms-on');el.append(a)});
+var bar=document.createElement('a');bar.className='cms-bar';bar.href='/admin/';bar.textContent='Editing on · all sections';document.body.append(bar)})();</script>
 </body>
 </html>

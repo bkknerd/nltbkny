@@ -1,4 +1,5 @@
-# Decap CMS for New Life Tabernacle. Editors sign in at /admin with Netlify Identity.
+# Decap CMS for New Life Tabernacle. Staff sign in at /admin (branded sign-in and dashboard);
+# the editor runs at /admin/edit and the dashboard tiles deep-link to each file below by its name.
 backend:
   name: git-gateway
   branch: main

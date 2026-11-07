@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>New Life Tabernacle · Edit the website</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    // Not signed in? Send people to the friendly sign-in page instead of the editor's own login screen.
+    try{ if(!localStorage.getItem('gotrue.user')) location.replace('/admin/' + location.hash); }catch(e){}
+  </script>
+  <style>
+    /* A way back to the dashboard, sitting in the editor's top bar */
+    .nlt-home{position:fixed;z-index:400;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:#0A0A0A;color:#fff;font:600 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+    .nlt-home:hover{background:#7A1D22}
+    .nlt-home:focus-visible{outline:2px solid #B8912F;outline-offset:3px}
+  </style>
+</head>
+<body>
+  <a class="nlt-home" href="/admin/">← All sections</a>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+</body>
+</html>

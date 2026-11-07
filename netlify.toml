@@ -5,11 +5,22 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# The CMS lives at /admin
+# Staff sign in at /admin; the editor itself is at /admin/edit
 [[redirects]]
   from = "/admin"
   to = "/admin/"
   status = 301
+
+[[redirects]]
+  from = "/admin/edit"
+  to = "/admin/edit/"
+  status = 301
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+    Cache-Control = "no-cache"
 
 [[headers]]
   for = "/*"

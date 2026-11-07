@@ -1,14 +1,189 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex">
-  <title>New Life Tabernacle · Content Manager</title>
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>New Life Tabernacle · Website sign-in</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&family=Hanken+Grotesk:wght@400..700&display=swap">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<style>
+:root{--ink:#0A0A0A;--ink-2:#5A5A5A;--bg:#fff;--surface:#F7F7F7;--rule:rgba(10,10,10,.12);--gold:#B8912F;--gold-lite:#D9B45A;--wine:#7A1D22;
+  --serif:"Source Serif 4",Georgia,serif;--sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font:17px/1.55 var(--sans);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;min-height:100svh}
+[hidden]{display:none!important}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.mono{width:44px;height:44px;flex:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* Sign-in */
+.gate{min-height:100svh;display:grid;grid-template-columns:1.1fr 1fr;background:var(--ink);color:#fff}
+.gate .side{position:relative;padding:48px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.gate .side::after{content:"";position:absolute;left:-10%;bottom:-30%;width:120%;height:90%;background:radial-gradient(closest-side,rgba(217,180,90,.22),transparent 70%);pointer-events:none}
+.gate .brand{display:flex;align-items:center;gap:14px;font-weight:600;letter-spacing:.01em}
+.gate h1{font:400 clamp(44px,6vw,84px)/.98 var(--serif);letter-spacing:-.02em;margin:0;position:relative;z-index:1}
+.gate h1 em{font-style:italic;color:var(--gold-lite)}
+.gate .addr{color:#A6A6A6;font-size:15px;position:relative;z-index:1}
+.gate .panel{background:var(--bg);color:var(--ink);padding:48px;display:flex;flex-direction:column;justify-content:center}
+.panel .inner{max-width:380px;width:100%;margin:0 auto}
+.panel h2{font:600 28px/1.15 var(--serif);margin:0 0 10px}
+.panel p{color:var(--ink-2);margin:0 0 28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 16px/1 var(--sans);padding:17px 26px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;transition:background .2s,color .2s,transform .2s}
+.btn-ink{background:var(--ink);color:#fff;width:100%}
+.btn-ink:hover{background:var(--wine)}
+.btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--rule)}
+.btn-line:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.small{font-size:14px;color:var(--ink-2);margin:16px 0 0}
+.small a{color:var(--wine)}
+.note{margin-top:28px;padding-top:22px;border-top:1px solid var(--rule);font-size:14px;color:var(--ink-2)}
+
+/* Dashboard */
+.top{border-bottom:1px solid var(--rule);background:var(--bg);position:sticky;top:0;z-index:5}
+.top .wrap{display:flex;align-items:center;gap:14px;height:72px}
+.top .who{margin-left:auto;display:flex;align-items:center;gap:18px;font-size:14px;color:var(--ink-2)}
+.top .who button{background:none;border:0;font:inherit;color:var(--ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:0}
+.top b{font-weight:600}
+.hi{padding:56px 0 8px}
+.hi h1{font:400 clamp(36px,5vw,56px)/1.05 var(--serif);letter-spacing:-.015em;margin:0 0 10px}
+.hi h1 em{font-style:italic;color:var(--gold)}
+.hi p{color:var(--ink-2);margin:0;max-width:56ch}
+.grp{padding:40px 0 0}
+.grp h2{font:600 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:0 0 16px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tile{display:flex;flex-direction:column;gap:6px;padding:24px 24px 22px;border-radius:14px;background:var(--surface);text-decoration:none;color:var(--ink);transition:background .2s,transform .25s cubic-bezier(.2,.75,.15,1);min-height:132px}
+.tile:hover{background:#EFEDE7;transform:translateY(-2px)}
+.tile b{font:600 21px/1.2 var(--serif)}
+.tile span{font-size:15px;color:var(--ink-2)}
+.tile i{margin-top:auto;font-style:normal;font-size:14px;font-weight:600;color:var(--wine)}
+.lead-tiles .tile{background:var(--ink);color:#fff}
+.lead-tiles .tile span{color:#A6A6A6}
+.lead-tiles .tile i{color:var(--gold-lite)}
+.lead-tiles .tile:hover{background:#1d1d1d}
+.how{margin:56px 0 72px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding-top:32px;border-top:1px solid var(--rule)}
+.how>div>b{display:block;font:600 18px/1.25 var(--serif);margin-bottom:6px}
+.how p{margin:0;font-size:15px;color:var(--ink-2)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.actions .btn{padding:14px 22px;font-size:15px;width:auto}
+
+@media(max-width:860px){
+  .gate{grid-template-columns:1fr}
+  .gate .side{padding:28px 24px 40px;min-height:44svh}
+  .gate .panel{padding:40px 24px 56px}
+  .tiles,.how{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .tiles,.how{grid-template-columns:1fr}
+  .top .who span{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="logo" viewBox="0 0 100 100"><defs><clipPath id="lc"><circle cx="50" cy="50" r="46"/></clipPath></defs><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3.4"/><g fill="currentColor" clip-path="url(#lc)"><rect x="22.6" y="18.2" width="6.6" height="37.3"/><polygon points="22.6,18.2 29.4,18.2 52.2,55.5 45.4,55.5"/><rect x="45.6" y="18.2" width="6.6" height="37.3"/><rect x="58.8" y="18.2" width="6.5" height="37.3"/><rect x="58.8" y="48.9" width="26.2" height="6.6"/><rect x="45.6" y="60.9" width="6.6" height="40"/><rect x="58.8" y="60.9" width="6.5" height="40"/><rect x="58.8" y="60.9" width="26.2" height="6.6"/></g></symbol></svg>
+
+<!-- Signed out -->
+<main class="gate" id="gate" hidden>
+  <div class="side">
+    <div class="brand"><svg class="mono"><use href="#logo"/></svg>New Life Tabernacle</div>
+    <h1>update the<br><em>website.</em></h1>
+    <p class="addr">1476 Bedford Avenue, Brooklyn</p>
+  </div>
+  <div class="panel">
+    <div class="inner">
+      <h2>Sign in</h2>
+      <p>Use the email address the church invited, and the password you chose when you accepted the invitation.</p>
+      <button class="btn btn-ink" type="button" id="signIn">Sign in with email</button>
+      <p class="small">Forgot your password? Press <b>Sign in with email</b>, then <b>Forgot password?</b> and we’ll email you a link.</p>
+      <p class="note">Need access? Ask the church office to invite you, or call (718) 636-4938. <br><a href="/">Back to the website</a></p>
+    </div>
+  </div>
+</main>
+
+<!-- Signed in -->
+<div id="dash" hidden>
+  <header class="top">
+    <div class="wrap">
+      <svg class="mono" style="width:34px;height:34px"><use href="#logo"/></svg>
+      <b>New Life Tabernacle</b>
+      <div class="who"><span id="whoName"></span><a href="/" target="_blank" rel="noopener">View site</a><button type="button" id="signOut">Sign out</button></div>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="hi">
+      <h1 id="greet">what would you like to <em>change?</em></h1>
+      <p>Pick a section, make your edit, then press <b>Publish</b> at the top of the screen. The website updates by itself about a minute later.</p>
+    </section>
+
+    <section class="grp" aria-labelledby="g1">
+      <h2 id="g1">Most often</h2>
+      <div class="tiles lead-tiles">
+        <a class="tile" href="edit/#/collections/content/entries/events"><b>Coming up</b><span>Add, change or remove an event</span><i>Edit events →</i></a>
+        <a class="tile" href="edit/#/collections/content/entries/watch"><b>Videos</b><span>Latest service, more videos and ways to watch</span><i>Edit videos →</i></a>
+        <a class="tile" href="edit/#/collections/content/entries/gatherings"><b>Service times</b><span>Sunday worship and Wednesday prayer</span><i>Edit times →</i></a>
+      </div>
+    </section>
+
+    <section class="grp" aria-labelledby="g2">
+      <h2 id="g2">The church</h2>
+      <div class="tiles">
+        <a class="tile" href="edit/#/collections/content/entries/pastors"><b>Pastors</b><span>Names, titles, bios and portraits</span><i>Edit →</i></a>
+        <a class="tile" href="edit/#/collections/content/entries/give"><b>Giving</b><span>Cash App, Zelle, PayPal and mail</span><i>Edit →</i></a>
+        <a class="tile" href="edit/#/collections/content/entries/site"><b>Church details</b><span>Address, phone, email and social links</span><i>Edit →</i></a>
+      </div>
+    </section>
+
+    <section class="grp" aria-labelledby="g3">
+      <h2 id="g3">Page text</h2>
+      <div class="tiles">
+        <a class="tile" href="edit/#/collections/content/entries/home"><b>Headlines</b><span>The big words at the top and each section’s intro</span><i>Edit →</i></a>
+        <a class="tile" href="edit/#/collections/content/entries/word"><b>A word for today</b><span>The moods and the verses for each one</span><i>Edit →</i></a>
+        <a class="tile" href="edit/#/collections/content/entries/attend"><b>First visit</b><span>Getting here and your first Sunday</span><i>Edit →</i></a>
+        <a class="tile" href="edit/#/collections/content/entries/fellowship"><b>Covenant Fellowship</b><span>NLCF description, mottos and links</span><i>Edit →</i></a>
+        <a class="tile" href="edit/#/collections/content/entries/community"><b>Family Life Center</b><span>The programs the center offers</span><i>Edit →</i></a>
+      </div>
+    </section>
+
+    <section class="how" aria-label="How editing works">
+      <div><b>Edit while you browse.</b><p>While you’re signed in, every section of the website shows an <b>Edit</b> button that opens the right page here.</p></div>
+      <div><b>Nothing breaks.</b><p>Every change is saved with a history. If something goes wrong, the web team can put the old version back.</p></div>
+      <div><b>Photos.</b><p>Upload tall photos for pastors, at least 800 × 1000. Phone photos are fine.</p></div>
+    </section>
+  </main>
+</div>
+
+<script>
+(function(){
+  var gate=document.getElementById('gate'),dash=document.getElementById('dash');
+  // Old links like /admin/#/collections/... go straight to the editor
+  if(/^#\/collections/.test(location.hash)){location.replace('edit/'+location.hash);return}
+  function show(user){
+    if(user){
+      var n=(user.user_metadata&&user.user_metadata.full_name)||user.email||'';
+      document.getElementById('whoName').textContent=n;
+      var first=(user.user_metadata&&user.user_metadata.full_name||'').split(' ')[0];
+      if(first){var g=document.getElementById('greet');g.innerHTML='';g.append('welcome, '+first+'. what would you like to ');var em=document.createElement('em');em.textContent='change?';g.append(em)}
+      gate.hidden=true;dash.hidden=false;
+      var next=sessionStorage.getItem('nlt-next');if(next){sessionStorage.removeItem('nlt-next');location.href=next}
+    }else{dash.hidden=true;gate.hidden=false}
+  }
+  // ?go=<section> lets the Edit buttons on the site land on the right page after sign-in
+  var go=new URLSearchParams(location.search).get('go');
+  if(go&&/^[a-z]+$/.test(go))sessionStorage.setItem('nlt-next','edit/#/collections/content/entries/'+go);
+  if(!window.netlifyIdentity){gate.hidden=false;document.getElementById('signIn').onclick=function(){alert('Sign-in could not load. Check your connection and refresh the page.')};return}
+  netlifyIdentity.on('init',show);
+  netlifyIdentity.on('login',function(u){netlifyIdentity.close();show(u)});
+  netlifyIdentity.on('logout',function(){show(null)});
+  document.getElementById('signIn').addEventListener('click',function(){netlifyIdentity.open('login')});
+  document.getElementById('signOut').addEventListener('click',function(){netlifyIdentity.logout()});
+  netlifyIdentity.init();
+})();
+</script>
 </body>
 </html>
