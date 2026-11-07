@@ -1,0 +1,19 @@
+{%- set addr = site.address_line1 + ", " + site.address_line2 -%}
+  <section class="gather band-wine" aria-labelledby="gH">
+    <div class="wrap">
+      <div class="g-top">
+        <h2 id="gH">service times</h2>
+        <div class="gx">
+          <a class="tlink" target="_blank" rel="noopener" href="{{ gatherings.calendar_title | gcal(gatherings.calendar_start, gatherings.calendar_end, false, gatherings.calendar_repeat_weekly, addr) }}">( add Sunday to your calendar )</a>
+          <a class="tlink" href="{{ addr | mapsUrl }}" target="_blank" rel="noopener">( get directions )</a>
+        </div>
+      </div>
+      <div class="g-times">
+        {%- for g in gatherings.items %}
+        <div class="gt"><b>{{ g.day }} <em>{{ g.time }}</em></b><span>{{ g.label }}</span></div>
+        {%- if not loop.last %}
+        <i aria-hidden="true">//</i>{% endif %}
+        {%- endfor %}
+      </div>
+    </div>
+  </section>

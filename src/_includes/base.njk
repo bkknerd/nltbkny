@@ -1,0 +1,103 @@
+{%- set addr = site.address_line1 + ", " + site.address_line2 -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{% if title %}{{ title }} · {{ site.name }}{% else %}{{ site.name }} | Brooklyn, NY{% endif %}</title>
+<meta name="description" content="{{ description or site.description }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{% if title %}{{ title }} · {% endif %}{{ site.name }}">
+<meta property="og:description" content="{{ description or site.description }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+{%- if pastors.items[0].photo %}
+<meta property="og:image" content="{{ site.url }}{{ pastors.items[0].photo }}">{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Church",
+  "name": {{ site.name | dump | safe }},
+  "url": {{ site.url | dump | safe }},
+  "telephone": {{ site.phone | dump | safe }},
+  "email": {{ site.email | dump | safe }},
+  "foundingDate": {{ site.founded | dump | safe }},
+  "address": {"@type": "PostalAddress", "streetAddress": {{ site.address_line1 | dump | safe }}, "addressLocality": {{ site.city | dump | safe }}, "addressRegion": {{ site.region | dump | safe }}, "postalCode": {{ site.postal_code | dump | safe }}, "addressCountry": "US"},
+  "sameAs": [{{ site.instagram | dump | safe }}, {{ site.facebook | dump | safe }}, {{ site.youtube | dump | safe }}],
+  "employee": [{% for p in pastors.items %}{"@type": "Person", "name": {{ p.name | dump | safe }}, "jobTitle": {{ p.role | dump | safe }}}{% if not loop.last %}, {% endif %}{% endfor %}]
+}
+</script>
+<script>/* Netlify Identity: finish CMS invites and password resets that land on the homepage */
+if(/(invite|recovery|confirmation|email_change)_token|access_token/.test(location.hash)){var s=document.createElement('script');s.src='https://identity.netlify.com/v1/netlify-identity-widget.js';s.onload=function(){netlifyIdentity.on('init',function(u){if(!u)netlifyIdentity.on('login',function(){location.href='/admin/'})});netlifyIdentity.init()};document.head.appendChild(s)}</script>
+</head>
+<body>
+<div class="intro" aria-hidden="true"><div><svg viewBox="0 0 100 100" aria-hidden="true"><defs><clipPath id="nltc2"><circle cx="50" cy="50" r="46"/></clipPath></defs><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3.4" pathLength="1"/><g fill="currentColor" clip-path="url(#nltc2)"><rect x="22.6" y="18.2" width="6.6" height="37.3"/><polygon points="22.6,18.2 29.4,18.2 52.2,55.5 45.4,55.5"/><rect x="45.6" y="18.2" width="6.6" height="37.3"/><rect x="58.8" y="18.2" width="6.5" height="37.3"/><rect x="58.8" y="48.9" width="26.2" height="6.6"/><rect x="45.6" y="60.9" width="6.6" height="40"/><rect x="58.8" y="60.9" width="6.5" height="40"/><rect x="58.8" y="60.9" width="26.2" height="6.6"/></g></svg><span>New Life Tabernacle</span></div></div>
+<div class="cur" id="cur" aria-hidden="true"><b></b></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="New Life Tabernacle home">
+      <svg class="mono" viewBox="0 0 100 100" aria-hidden="true"><defs><clipPath id="nltc1"><circle cx="50" cy="50" r="46"/></clipPath></defs><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3.4"/><g fill="currentColor" clip-path="url(#nltc1)"><rect x="22.6" y="18.2" width="6.6" height="37.3"/><polygon points="22.6,18.2 29.4,18.2 52.2,55.5 45.4,55.5"/><rect x="45.6" y="18.2" width="6.6" height="37.3"/><rect x="58.8" y="18.2" width="6.5" height="37.3"/><rect x="58.8" y="48.9" width="26.2" height="6.6"/><rect x="45.6" y="60.9" width="6.6" height="40"/><rect x="58.8" y="60.9" width="6.5" height="40"/><rect x="58.8" y="60.9" width="26.2" height="6.6"/></g></svg>
+      <span class="bt">New Life Tabernacle</span>
+    </a>
+    <div class="m-acts">
+      <a class="btn btn-ink m-give" href="/give/">Give</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="main" id="mainNav" aria-label="Main">
+      {%- for n in [["/visit/","Visit"],["/watch/","Watch"],["/events/","Events"],["/pastors/","Pastors"],["/ministries/","Ministries"],["/contact/","Contact"]] %}
+      <a href="{{ n[0] }}"{% if page.url == n[0] %} aria-current="page"{% endif %}>{{ n[1] }}</a>
+      {%- endfor %}
+      <a class="btn btn-ink" href="/give/"{% if page.url == "/give/" %} aria-current="page"{% endif %}>Give</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+{{ content | safe }}
+</main>
+
+<footer class="night">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <h2 class="ft-h">stay connected</h2>
+        <p>{{ site.newsletter_text }}</p>
+        <form class="news" id="newsForm" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="newsletter">
+          <p class="sr"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <label class="sr" for="nEmail">Email address</label>
+          <input id="nEmail" name="email" type="email" placeholder="you@email.com" autocomplete="email">
+          <button class="btn btn-gold" type="submit">Subscribe</button>
+        </form>
+        <p id="newsDone" hidden style="margin-top:10px;color:var(--gold-lite)"></p>
+      </div>
+      <div><h2 class="ft-h">quick links</h2><ul><li><a href="/visit/">Plan a visit</a></li><li><a href="/watch/">Watch</a></li><li><a href="/events/">Events</a></li><li><a href="/give/">Give</a></li></ul></div>
+      <div><h2 class="ft-h">connect</h2><ul><li><a href="/pastors/">Our pastors</a></li><li><a href="/ministries/#fellowship">Covenant Fellowship</a></li><li><a href="{{ fellowship.website }}" target="_blank" rel="noopener">NLCF website</a></li><li><a href="/ministries/#community">Family Life Center</a></li><li><a href="/contact/">Contact us</a></li></ul></div>
+      <div><h2 class="ft-h">socials</h2><ul><li><a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a></li><li><a href="{{ site.facebook }}" target="_blank" rel="noopener">Facebook</a></li><li><a href="{{ site.youtube }}" target="_blank" rel="noopener">YouTube</a></li><li><a href="{{ fellowship.instagram }}" target="_blank" rel="noopener">NLCF Instagram</a></li></ul></div>
+    </div>
+    <p class="wordmark" aria-hidden="true">nltbkny</p>
+    <div class="legal">
+      <p class="legal-l"><span>© {{ "" | year }} {{ site.name }}, Inc.</span><span>{{ site.address_line1 }}, {{ site.address_line2 }}</span><span><a href="tel:{{ site.phone | tel }}">{{ site.phone }}</a></span></p>
+      <p class="legal-r"><a class="staff" href="/admin/">Staff sign in</a><a class="credit" href="https://draftandlogic.com" target="_blank" rel="noopener">Site by Draft &amp; Logic</a></p>
+    </div>
+  </div>
+</footer>
+
+{% if hasWord %}<script>window.NLT={moods:{{ word.moods | dump | safe }},defaultMood:{{ word.default_mood | dump | safe }}};</script>{% endif %}
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="/assets/site.js"></script>
+<script>/* Staff who are signed in to the editor see an Edit button on each section */
+(function(){var u;try{u=JSON.parse(localStorage.getItem('gotrue.user')||'null')}catch(e){}if(!u)return;
+var map=[['.hero','home','headlines'],['#word','word','verses'],['#watch','watch','videos'],['.gather','gatherings','service times'],['#visit','attend','first visit'],['#events','events','events'],['#leadership','pastors','pastors'],['#fellowship','fellowship','fellowship'],['#community','community','Family Life Center'],['#give','give','giving'],['#hello','home','page text'],['.pteaser','pastors','pastors'],['.phead','home','page text'],['footer','site','church details']];
+map.forEach(function(m){var el=document.querySelector(m[0]);if(!el)return;var a=document.createElement('a');a.className='cms-edit';a.href='/admin/edit/#/collections/content/entries/'+m[1];a.textContent='Edit '+m[2];el.classList.add('cms-on');el.append(a)});
+var bar=document.createElement('a');bar.className='cms-bar';bar.href='/admin/';bar.textContent='Editing on · all sections';document.body.append(bar)})();</script>
+</body>
+</html>
+

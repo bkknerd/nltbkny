@@ -1,0 +1,19 @@
+  <section class="s pteaser band-grey" aria-labelledby="ptH">
+    <div class="wrap">
+      <div class="sh">
+        <h2 id="ptH">{{ home.pastors_heading }}</h2>
+        <p class="lead">{{ home.pastors_lead }} <a class="tlink" href="/pastors/">( meet our pastors )</a></p>
+      </div>
+      <ul class="pt-grid">
+        {%- for p in pastors.items %}
+        <li>
+          <a href="/pastors/#p{{ loop.index }}">
+            <figure class="pt-fig">{% if p.photo %}<img src="{{ p.photo }}" alt="" width="800" height="1000" loading="lazy">{% endif %}</figure>
+            <span class="pt-role">{{ p.role }}</span>
+            <b class="pt-name">{{ p.name }}</b>
+          </a>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </section>

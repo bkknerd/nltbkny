@@ -1,0 +1,34 @@
+{%- set addr = site.address_line1 + ", " + site.address_line2 -%}
+  <section class="s attend band-grey" id="visit" aria-labelledby="visitH">
+    <div class="wrap">
+      <div class="at-top">
+        <{{ lvl or "h2" }} id="visitH">{{ home.attend_heading }}</{{ lvl or "h2" }}>
+        <p class="lead">{{ home.attend_lead }}</p>
+      </div>
+      <div class="at-cols">
+        <div class="atc">
+          <{{ sub or "h3" }}>where</{{ sub or "h3" }}>
+          <p class="addr">{{ site.address_line1 }}<br>{{ site.address_line2 }}</p>
+          <div class="row" style="gap:2px 24px">
+            <a class="tlink" href="{{ addr | mapsUrl }}" target="_blank" rel="noopener">( get directions )</a>
+            <button class="tlink" type="button" data-copy="{{ addr }}" style="background:none;border:0;cursor:pointer">( copy address )</button>
+          </div>
+        </div>
+        <div class="atc">
+          <{{ sub or "h3" }}>getting here</{{ sub or "h3" }}>
+          {%- for p in attend.getting_here %}
+          <p>{{ p }}</p>{% endfor %}
+        </div>
+        <div class="atc">
+          <{{ sub or "h3" }}>reach us</{{ sub or "h3" }}>
+          <p><a href="tel:{{ site.phone | tel }}">{{ site.phone }}</a><button class="copy-btn" type="button" data-copy="{{ site.phone }}">Copy</button></p>
+          <p><a href="mailto:{{ site.email }}">{{ site.email }}</a><button class="copy-btn" type="button" data-copy="{{ site.email }}">Copy</button></p>
+        </div>
+      </div>
+      <{{ sub or "h3" }} class="first-h">your first Sunday</{{ sub or "h3" }}>
+      <div class="first">
+        {%- for t in attend.first_sunday %}
+        <div><b>{{ t.title }}</b><p>{{ t.text }}</p></div>{% endfor %}
+      </div>
+    </div>
+  </section>

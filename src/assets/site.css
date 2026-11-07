@@ -141,7 +141,7 @@ html.lenis,html.lenis body{height:auto}
 .pitem.on .pinfo>*{opacity:1;transform:none}
 .pitem.on .pinfo>*:nth-child(2){transition-delay:.08s}.pitem.on .pinfo>*:nth-child(3){transition-delay:.16s}.pitem.on .pinfo>*:nth-child(4){transition-delay:.24s}
 .prole{font-weight:600;color:var(--gold-ink);font-size:15px}
-.pinfo h3{font-size:clamp(44px,5.6vw,92px);letter-spacing:-.045em;line-height:.9}
+.pinfo :is(h2,h3){font-size:clamp(44px,5.6vw,92px);letter-spacing:-.045em;line-height:.9}
 .pbio{color:var(--ink-2);max-width:46ch;font-size:17.5px}
 .pnav{position:absolute;right:max(48px,env(safe-area-inset-right,0px));left:calc(50% + clamp(16px,2.5vw,40px));bottom:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:calc(var(--w)/2)}
 .pnav button{display:grid;gap:10px;align-content:end;text-align:left;background:none;border:0;padding:0;cursor:pointer;font:500 13.5px var(--f-body);color:var(--ink-2)}
@@ -156,7 +156,7 @@ html.lenis,html.lenis body{height:auto}
   .pfig img{transform:none}
   .pinfo{padding-bottom:0}
   .pinfo>*{opacity:1;transform:none}
-  .pinfo h3{font-size:clamp(36px,10vw,52px)}
+  .pinfo :is(h2,h3){font-size:clamp(36px,10vw,52px)}
   .pnav{display:none}
 }
 
@@ -204,14 +204,14 @@ html.lenis,html.lenis body{height:auto}
 .pd b{font-size:clamp(130px,17vw,260px);letter-spacing:-.06em;font-variation-settings:"wght" 760;transition:font-variation-settings .8s var(--ease)}
 .poster:hover .pd b{font-variation-settings:"wght" 240}
 .pd span{font-size:clamp(20px,2vw,30px);font-weight:600;letter-spacing:-.01em;margin-top:.5em;text-transform:lowercase}
-.poster h3{font-size:clamp(28px,3vw,44px);letter-spacing:-.035em;color:var(--pf)}
+.poster :is(h2,h3){font-size:clamp(28px,3vw,44px);letter-spacing:-.035em;color:var(--pf)}
 .poster p:not(.pk):not(.pd){color:var(--pf2);margin-top:8px;max-width:40ch}
 .poster .tlink{margin-top:10px}
 .poster .tlink:hover{color:var(--pf)!important;letter-spacing:.02em}
 @media(max-width:760px){.posters{grid-template-columns:1fr}.poster{min-height:340px}}
 
 /* Attend */
-.attend h2{font-size:clamp(46px,6.4vw,100px);letter-spacing:-.045em;margin-bottom:clamp(28px,4vw,48px)}
+.at-top h2{font-size:clamp(46px,6.4vw,100px);letter-spacing:-.045em;margin-bottom:clamp(28px,4vw,48px)}
 .attend .addr{margin-bottom:14px;font-size:clamp(32px,3.4vw,50px)}
 
 /* Connect form + owner inbox */
@@ -249,11 +249,11 @@ html.lenis,html.lenis body{height:auto}
 
 /* Attend v2 */
 .at-top{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:32px;align-items:end;margin-bottom:clamp(44px,6vw,80px)}
-.attend h2{font-size:clamp(56px,9vw,150px);letter-spacing:-.055em;line-height:.86;margin:0}
+.at-top h2{font-size:clamp(56px,9vw,150px);letter-spacing:-.055em;line-height:.86;margin:0}
 .at-cols{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);border-top:1px solid var(--ink)}
 .atc{padding:26px 28px 32px 0;display:grid;gap:12px;align-content:start}
 .atc+.atc{padding-left:28px;border-left:1px solid var(--rule)}
-.atc h3{font-family:var(--f-body);font-weight:600;font-size:15px;letter-spacing:0;color:var(--gold-ink)}
+.atc :is(h2,h3){font-family:var(--f-body);font-weight:600;font-size:15px;letter-spacing:0;color:var(--gold-ink)}
 .atc p{color:var(--ink-2)}
 .atc a{color:var(--ink);text-decoration-color:var(--gold);text-underline-offset:4px}
 .attend .addr{font-size:clamp(30px,2.8vw,42px);margin:0;color:var(--ink)}
@@ -285,7 +285,7 @@ html.lenis,html.lenis body{height:auto}
 .t-gold{background:#D9B45A;color:#0A0A0A}.t-gold .play{background:#0A0A0A}.t-gold .play path{fill:#DDB95E}
 .live{display:grid;align-content:start;border-top:1px solid var(--night-rule)}
 .lv{padding:18px 0;border-bottom:1px solid var(--night-rule);display:grid;gap:2px}
-.lv h3{font-size:clamp(22px,1.9vw,28px);letter-spacing:-.025em}
+.lv :is(h2,h3){font-size:clamp(22px,1.9vw,28px);letter-spacing:-.025em}
 .lv p{color:var(--on-night-2);font-size:15.5px}
 .vrow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:clamp(28px,3vw,40px)}
 .vrow .vp{aspect-ratio:3/4}
@@ -296,7 +296,7 @@ html.lenis,html.lenis body{height:auto}
 .give-h{font-size:clamp(56px,8vw,128px);letter-spacing:-.055em;margin-bottom:28px}
 .gways{display:grid;border-top:1px solid var(--night-rule)}
 .gw{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px 24px;padding:24px 0;border-bottom:1px solid var(--night-rule)}
-.gw h3{font-family:var(--f-body);font-weight:600;font-size:15px;letter-spacing:0;color:var(--gold-lite)}
+.gw :is(h2,h3){font-family:var(--f-body);font-weight:600;font-size:15px;letter-spacing:0;color:var(--gold-lite)}
 .gw .hd{font-family:var(--f-display);font-weight:600;font-size:clamp(26px,2.8vw,40px);letter-spacing:-.03em;line-height:1.1;margin-top:4px;overflow-wrap:anywhere}
 .gw small{display:block;color:var(--on-night-2);font-size:14.5px;margin-top:4px}
 .gw p:not(.hd){color:var(--on-night-2);max-width:44ch;margin-top:4px}
@@ -309,7 +309,7 @@ html.lenis,html.lenis body{height:auto}
 .pfig:hover img{filter:none}
 @media(min-width:861px){.ptrack{height:260svh}}
 .pitem{z-index:1}
-.pinfo h3{font-size:clamp(40px,4.6vw,76px)}
+.pinfo :is(h2,h3){font-size:clamp(40px,4.6vw,76px)}
 
 /* Times */
 .times{border-block:1px solid var(--rule)}
@@ -480,12 +480,12 @@ section.s:not(.night)+section.s:not(.night)>.wrap{border-top:1px solid var(--rul
 
 /* display + section titles: one scale, optical left edge */
 .hero h1{margin-left:-.065em}
-.sh h2,.attend h2,.give-h,.hello-h{font-size:var(--t-h1);letter-spacing:-.052em;line-height:.88;margin-left:-.05em}
+.sh h2,.at-top h2,.give-h,.hello-h{font-size:var(--t-h1);letter-spacing:-.052em;line-height:.88;margin-left:-.05em}
 .nlcf h2,.f-top h2{font-size:var(--t-h1l);letter-spacing:-.045em;line-height:.92;margin-left:-.04em}
-.pinfo h3{font-size:clamp(44px,5vw,84px);letter-spacing:-.05em;line-height:.9;margin-left:-.04em}
-.poster h3,.first-h,.feat .vt b{letter-spacing:-.04em}
+.pinfo :is(h2,h3){font-size:clamp(44px,5vw,84px);letter-spacing:-.05em;line-height:.9;margin-left:-.04em}
+.poster :is(h2,h3),.first-h,.feat .vt b{letter-spacing:-.04em}
 .first-h{font-size:var(--t-h2);line-height:1}
-.lv h3,.first b,.f-list b{font-size:var(--t-h3);letter-spacing:-.022em;line-height:1.08}
+.lv :is(h2,h3),.first b,.f-list b{font-size:var(--t-h3);letter-spacing:-.022em;line-height:1.08}
 .vrow .vt b{font-size:clamp(20px,1.6vw,24px);letter-spacing:-.025em;line-height:1}
 .gw .hd{letter-spacing:-.03em}
 
@@ -495,9 +495,9 @@ section.s:not(.night)+section.s:not(.night)>.wrap{border-top:1px solid var(--rul
 .pbio{font-size:var(--t-lead);max-width:44ch}
 
 /* labels: one voice — 14px semibold, accent colour */
-.g-top h2,.atc h3,.gw h3,.prole,.pk,.vp .vd,.since{font-family:var(--f-body);font-size:var(--t-label);font-weight:600;letter-spacing:.005em;line-height:1.3}
+.g-top h2,.atc :is(h2,h3),.gw :is(h2,h3),.prole,.pk,.vp .vd,.since{font-family:var(--f-body);font-size:var(--t-label);font-weight:600;letter-spacing:.005em;line-height:1.3}
 .g-top h2{color:var(--ink)}
-.atc h3,.prole,.since{color:var(--gold-ink)}
+.atc :is(h2,h3),.prole,.since{color:var(--gold-ink)}
 
 /* nav + buttons */
 nav.main a{font-size:14.5px;letter-spacing:.003em}
@@ -589,13 +589,13 @@ section.s:not(.night)+section.s:not(.night)>.wrap::before{content:none}
 
 /* ===== Editorial direction: Bodoni Moda display headlines over the sans system ===== */
 :root{--f-head:"Source Serif 4","Source Serif Pro","Iowan Old Style",Georgia,serif}
-.hero h1,.sh h2,.attend h2,.give-h,.hello-h,.w-ask h2,.nlcf h2,.f-top h2,.pinfo h3,.sp h2,.wordmark,.first-h,.mottos blockquote,.feat .vt b,.gt b,.pd b{font-family:var(--f-head);font-optical-sizing:auto}
+.hero h1,.sh h2,.at-top h2,.give-h,.hello-h,.w-ask h2,.nlcf h2,.f-top h2,.pinfo :is(h2,h3),.sp h2,.wordmark,.first-h,.mottos blockquote,.feat .vt b,.gt b,.pd b{font-family:var(--f-head);font-optical-sizing:auto}
 .hero h1{font-weight:640;letter-spacing:-.03em;line-height:.84;margin-left:-.03em}
 .hero h1 .c{font-variation-settings:"wght" var(--w,660)}
 .hero h1 .l:nth-child(3)>span{font-style:italic}
-.sh h2,.attend h2,.give-h,.hello-h{font-weight:500;letter-spacing:-.025em;line-height:.9;margin-left:-.025em}
+.sh h2,.at-top h2,.give-h,.hello-h{font-weight:500;letter-spacing:-.025em;line-height:.9;margin-left:-.025em}
 .w-ask h2,.nlcf h2,.f-top h2{font-weight:500;letter-spacing:-.02em;line-height:.95;margin-left:-.02em}
-.pinfo h3{font-weight:500;letter-spacing:-.025em;line-height:.95;margin-left:-.02em}
+.pinfo :is(h2,h3){font-weight:500;letter-spacing:-.025em;line-height:.95;margin-left:-.02em}
 .sp h2{font-weight:500;letter-spacing:-.03em}
 .first-h{font-weight:500;letter-spacing:-.015em}
 .mottos blockquote{font-weight:500;letter-spacing:-.015em;line-height:1.1}
@@ -606,13 +606,13 @@ section.s:not(.night)+section.s:not(.night)>.wrap::before{content:none}
 .pd b{font-variation-settings:"wght" 860;letter-spacing:-.045em}
 .poster:hover .pd b{font-variation-settings:"wght" 420}
 .wordmark{font-weight:600;letter-spacing:-.04em;font-style:italic}
-.attend h2 em,.sh h2 em{font-style:italic}
+.at-top h2 em,.sh h2 em{font-style:italic}
 
 /* readability retune for Source Serif 4 */
 .hero h1{font-weight:680;letter-spacing:-.035em;line-height:.86}
 .hero h1 .c{font-variation-settings:"wght" var(--w,680)}
-.sh h2,.attend h2,.give-h,.hello-h{font-weight:620;letter-spacing:-.032em;line-height:.92}
-.w-ask h2,.nlcf h2,.f-top h2,.pinfo h3{font-weight:620;letter-spacing:-.028em;line-height:.97}
+.sh h2,.at-top h2,.give-h,.hello-h{font-weight:620;letter-spacing:-.032em;line-height:.92}
+.w-ask h2,.nlcf h2,.f-top h2,.pinfo :is(h2,h3){font-weight:620;letter-spacing:-.028em;line-height:.97}
 .sp h2{font-weight:620;letter-spacing:-.035em}
 .first-h,.mottos blockquote{font-weight:600}
 .feat .vt b,.gt b{font-weight:680}
@@ -625,7 +625,7 @@ section.s:not(.night)+section.s:not(.night)>.wrap::before{content:none}
 .w-verse,.verse{font-weight:400;letter-spacing:-.01em}
 .addr,.attend .addr{font-weight:600;letter-spacing:-.035em}
 .gw .hd{font-weight:600;letter-spacing:-.03em}
-.lv h3,.first b,.f-list b,.vrow .vt b,.poster h3{font-weight:650;letter-spacing:-.03em}
+.lv :is(h2,h3),.first b,.f-list b,.vrow .vt b,.poster :is(h2,h3){font-weight:650;letter-spacing:-.03em}
 .h-next b{font-weight:600;letter-spacing:-.03em}
 .brand .bt{font-weight:600;letter-spacing:.24em;font-size:12px}
 .intro span{font-weight:600}
@@ -665,7 +665,7 @@ section.s,section.s:not(.night)+section.s:not(.night),.word{padding-block:var(--
 .nl-links{margin-top:22px}
 
 /* every section title: same face, weight, size and tracking */
-.sh h2,.attend h2,.give-h,.hello-h,.w-ask h2{font-size:var(--t-h1);font-weight:620;letter-spacing:-.032em;line-height:.92}
+.sh h2,.at-top h2,.give-h,.hello-h,.w-ask h2{font-size:var(--t-h1);font-weight:620;letter-spacing:-.032em;line-height:.92}
 .nlcf h2,.f-top h2{font-size:var(--t-h1l);font-weight:620;letter-spacing:-.028em;line-height:.95}
 .w-ask .lead,.nlcf .lead,.f-top .lead{margin-top:18px}
 
@@ -686,3 +686,58 @@ section.s:not(.night)+section.s:not(.night)>.wrap{padding-top:0}
 .legal-r{display:inline-flex;gap:20px;flex-wrap:wrap}
 .legal .staff,.legal .credit{color:var(--on-night-2);opacity:1;text-decoration:none}
 .legal .staff:hover,.legal .credit:hover{color:var(--on-night);text-decoration:underline;text-underline-offset:3px}
+
+/* ===== Multi-page ===== */
+/* page titles use the same scale as section titles */
+.sh h1,.at-top h1,h1.give-h,h1.hello-h{font-family:var(--f-head);font-size:var(--t-h1);font-weight:620;letter-spacing:-.032em;line-height:.92;margin-left:-.025em;text-wrap:balance}
+.at-top h1{font-size:var(--t-h1)}
+nav.main a[aria-current="page"]:not(.btn){color:var(--ink);text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:1.5px;text-underline-offset:6px}
+.phead{padding-bottom:0!important}
+.phead .sh{margin-bottom:0}
+.sh .lead .tlink{display:inline-block;margin-left:4px;white-space:nowrap}
+.more{margin-top:28px}
+
+/* pastors preview on the homepage */
+.pt-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
+.pt-grid a{display:grid;gap:6px;text-decoration:none;color:var(--ink)}
+.pt-fig{margin:0 0 12px;aspect-ratio:4/5;overflow:hidden;border-radius:4px;background:#ddd}
+.pt-fig img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:grayscale(1);transition:filter .6s,transform 1.2s var(--ease)}
+.pt-grid a:hover .pt-fig img,.pt-grid a:focus-visible .pt-fig img{filter:none;transform:scale(1.03)}
+.pt-role{font-size:var(--t-label);font-weight:600;color:var(--gold-ink)}
+.pt-name{font-family:var(--f-head);font-weight:600;font-size:clamp(22px,2vw,30px);letter-spacing:-.02em;line-height:1.1}
+@media(max-width:760px){.pt-grid{grid-template-columns:1fr 1fr}.pt-grid li:first-child{grid-column:1/-1}}
+
+/* contact details on the contact page */
+.reach{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--rule)}
+.reach li{display:grid;grid-template-columns:80px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--rule);font-size:16px}
+.reach b{font-weight:600;font-size:var(--t-label)}
+.reach a{color:var(--ink)}
+
+/* footer bottom row: two groups, even spacing, rule above */
+.legal{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:14px 48px;margin-top:clamp(36px,4vw,48px);padding-top:24px;border-top:1px solid var(--night-rule);font-size:14px;line-height:1.5;color:var(--on-night-2)}
+.legal p{margin:0}
+.legal-l{display:flex;flex-wrap:wrap;row-gap:4px}
+.legal-l span+span::before{content:"·";margin:0 .7em;color:var(--on-night-2);opacity:.6}
+.legal-l a{color:inherit;text-decoration:none}
+.legal-l a:hover{color:var(--on-night)}
+.legal-r{display:flex;flex-wrap:wrap;gap:8px 32px}
+@media(max-width:760px){
+  .legal{flex-direction:column;align-items:flex-start;gap:16px}
+  .legal-l{flex-direction:column}
+  .legal-l span+span::before{content:none}
+  .legal-r{gap:8px 28px}
+}
+.sh .lead .tlink{display:table;margin:14px 0 0 -.1em}
+
+/* ===== Spacing, final: every band uses the same top and bottom padding ===== */
+:root{--sp:clamp(56px,6.5vw,96px);--sp-first:clamp(40px,4.5vw,64px)}
+section.s,section.s:not(.night)+section.s:not(.night),.word,.gather,.pastors.pteaser{padding-block:var(--sp)}
+.pastors{padding-top:var(--sp)}
+/* the first band under the header sits closer to it */
+main>section:first-child:not(.hero){padding-top:var(--sp-first)}
+.phead{padding-bottom:var(--sp-head)!important}
+.sp{padding-block:var(--sp);min-height:0}
+footer{border-top:1px solid var(--night-rule);padding-top:var(--sp)}
+/* titles and their intro text start on the same line, so nothing sinks and leaves a gap above */
+.sh,.at-top{align-items:start}
+.sh .lead,.at-top .lead{padding-top:.5em}

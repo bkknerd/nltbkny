@@ -1,0 +1,30 @@
+  <section class="s night" id="watch" aria-labelledby="watchH">
+    <div class="wrap">
+      <div class="sh">
+        <{{ lvl or "h2" }} id="watchH">{{ home.watch_heading }}</{{ lvl or "h2" }}>
+        <p class="lead">{{ home.watch_lead | nbsp }}{% if short %} <a class="tlink" href="/watch/">( all videos )</a>{% endif %}</p>
+      </div>
+      <div class="wgrid">
+        {%- set f = watch.featured %}
+        <a class="ph vid vp feat t-ink" data-yt="{{ f.youtube_id }}" href="https://www.youtube.com/watch?v={{ f.youtube_id }}" target="_blank" rel="noopener">
+          <span class="vd">{{ f.date_label }}</span><span class="play" aria-hidden="true"><svg width="16" height="18" viewBox="0 0 24 26"><path d="M3 2 L22 13 L3 24 Z" fill="#0A0A0A"/></svg></span>
+          <span class="vt"><b>{{ f.title }}</b><span>{{ f.subtitle }}</span></span>
+        </a>
+        <div class="live">
+          {%- for l in watch.links %}
+          <div class="lv"><{{ sub or "h3" }}>{{ l.title }}</{{ sub or "h3" }}><p>{{ l.text | nbsp | md | safe }}</p><a class="tlink" href="{{ l.url }}" target="_blank" rel="noopener">( {{ l.label }} )</a></div>
+          {%- endfor %}
+        </div>
+      </div>
+      {%- if not short %}
+      <div class="vrow" aria-label="More videos">
+        {%- for v in watch.videos %}
+        <a class="ph vid vp t-{{ v.color or 'ink' }}" data-yt="{{ v.youtube_id }}" href="https://www.youtube.com/watch?v={{ v.youtube_id }}" target="_blank" rel="noopener">
+          <span class="vd">{{ v.date_label }}</span><span class="play" aria-hidden="true"><svg width="16" height="18" viewBox="0 0 24 26"><path d="M3 2 L22 13 L3 24 Z" fill="#0A0A0A"/></svg></span>
+          <span class="vt"><b>{{ v.title }}</b><span>{{ v.subtitle }}</span></span>
+        </a>
+        {%- endfor %}
+      </div>
+      {%- endif %}
+    </div>
+  </section>

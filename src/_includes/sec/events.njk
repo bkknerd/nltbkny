@@ -1,0 +1,19 @@
+{%- set addr = site.address_line1 + ", " + site.address_line2 -%}
+  <section class="s" id="events" aria-labelledby="evH">
+    <div class="wrap">
+      <div class="sh">
+        <{{ lvl or "h2" }} id="evH">{{ home.events_heading }}</{{ lvl or "h2" }}>
+        <p class="lead">Follow <a href="{{ site.instagram }}" target="_blank" rel="noopener">{{ site.instagram_handle }}</a> and <a href="{{ site.nlcf_instagram }}" target="_blank" rel="noopener">{{ site.nlcf_instagram_handle }}</a> for the latest.{% if limit %} <a class="tlink" href="/events/">( all events )</a>{% endif %}</p>
+      </div>
+      <div class="posters">
+        {%- for e in events.items %}{% if not limit or loop.index <= limit %}
+        <article class="poster p-{{ e.color or 'night' }}">
+          <p class="pk"><span>{{ e.kicker }}</span><span>{{ e.host }}</span></p>
+          <p class="pd"><b>{{ e.big or (e.start | day) }}</b><span>{{ e.small or (e.start | mon) }}</span></p>
+          <div><{{ sub or "h3" }}>{{ e.title }}</{{ sub or "h3" }}><p>{{ e.description }}</p>
+          <a class="tlink" target="_blank" rel="noopener" href="{{ e.title | gcal(e.start, e.end, e.all_day, e.repeat_weekly, addr) }}">( add to calendar )</a></div>
+        </article>
+        {%- endif %}{% endfor %}
+      </div>
+    </div>
+  </section>

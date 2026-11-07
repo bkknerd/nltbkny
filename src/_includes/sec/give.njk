@@ -1,0 +1,20 @@
+  <section class="s night" id="give" aria-labelledby="giveH">
+    <div class="wrap give">
+      <div>
+        <{{ lvl or "h2" }} id="giveH" class="give-h">give</{{ lvl or "h2" }}>
+        <blockquote class="verse">{{ give.verse }}</blockquote>
+        <span class="vref">{{ give.reference }}</span>
+      </div>
+      <div class="gways">
+        {%- for g in give.methods %}
+        <div class="gw">
+          <div><{{ sub or "h3" }}>{{ g.name }}</{{ sub or "h3" }}><p class="hd">{{ g.handle }}</p>{% if g.note %}<small>{{ g.note }}</small>{% endif %}</div>
+          <div class="ga">{% if g.link_url %}<a class="tlink" href="{{ g.link_url }}" target="_blank" rel="noopener">( {{ g.link_label }} )</a>{% endif %}<button class="copy-btn" type="button" data-copy="{{ g.handle }}">Copy</button></div>
+        </div>
+        {%- endfor %}
+        <div class="gw">
+          <div><{{ sub or "h3" }}>{{ give.mail_title }}</{{ sub or "h3" }}><p>{{ give.mail_text }}</p></div>
+        </div>
+      </div>
+    </div>
+  </section>

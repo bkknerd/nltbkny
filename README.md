@@ -42,7 +42,10 @@ To use the CMS locally without signing in, uncomment `local_backend: true` in `s
 
 | Path | What it is |
 | --- | --- |
-| `src/index.njk` | The page template |
+| `src/index.njk` | Homepage |
+| `src/visit/`, `watch/`, `events/`, `pastors/`, `ministries/`, `give/`, `contact/` | One folder per page |
+| `src/_includes/base.njk` | Shared head, menu and footer |
+| `src/_includes/sec/` | One file per section, reused across pages |
 | `src/_data/*.json` | All content (what the CMS edits) |
 | `src/assets/site.css`, `site.js` | Design and interactions |
 | `src/images/uploads/` | Photos uploaded through the CMS |

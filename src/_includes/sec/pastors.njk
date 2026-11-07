@@ -1,0 +1,25 @@
+  <section class="pastors band-grey" id="leadership" aria-labelledby="leadH">
+    <div class="wrap">
+      <div class="sh">
+        <{{ lvl or "h2" }} id="leadH">{{ home.pastors_heading }}</{{ lvl or "h2" }}>
+        <p class="lead">{{ home.pastors_lead }}</p>
+      </div>
+    </div>
+    <div class="ptrack" id="ptrack">
+      <div class="ppin">
+        {%- for p in pastors.items %}
+        <article class="pitem{% if loop.first %} on{% endif %}" id="p{{ loop.index }}" data-i="{{ loop.index0 }}">
+          <figure class="ph pfig">{% if p.photo %}<img src="{{ p.photo }}" alt="{{ p.name }}" width="800" height="1000"{% if not loop.first %} loading="lazy"{% endif %}>{% endif %}</figure>
+          <div class="pinfo">
+            <p class="prole">{{ p.role }}</p>
+            <{{ sub or "h3" }}>{{ p.name }}</{{ sub or "h3" }}>
+            <p class="pbio">{{ p.bio | md | safe }}</p>
+            {%- if p.instagram %}
+            <a class="tlink" href="https://www.instagram.com/{{ p.instagram }}" target="_blank" rel="noopener">( @{{ p.instagram }} )</a>{% endif %}
+          </div>
+        </article>
+        {%- endfor %}
+        <nav class="pnav" aria-label="Pastors">{% for p in pastors.items %}<button type="button" data-go="{{ loop.index0 }}"{% if loop.first %} aria-current="true"{% endif %}><span>{{ p.short_name or p.name }}</span><i></i></button>{% endfor %}</nav>
+      </div>
+    </div>
+  </section>

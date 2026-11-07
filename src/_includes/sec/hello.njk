@@ -1,0 +1,30 @@
+  <section class="s hello band-grey" id="hello" aria-label="Say hello">
+    <div class="wrap">
+      <div class="connect">
+        <div>
+          <{{ lvl or "h2" }} class="hello-h">{{ home.hello_heading }}</{{ lvl or "h2" }}>
+          <p class="lead">{{ home.hello_lead }}</p>
+          {%- if showReach %}
+          <ul class="reach">
+            <li><b>Call</b><a href="tel:{{ site.phone | tel }}">{{ site.phone }}</a></li>
+            <li><b>Email</b><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+            <li><b>Visit</b><span>{{ site.address_line1 }}<br>{{ site.address_line2 }}</span></li>
+          </ul>
+          {%- endif %}
+        </div>
+        <form id="connectForm" name="say-hello" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="say-hello">
+          <p class="sr"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <div class="fields">
+            <label for="cName">Your name<input id="cName" name="name" required autocomplete="name"></label>
+            <label for="cContact">Email or phone<input id="cContact" name="contact" required autocomplete="email"></label>
+            <label class="full" for="cKind">I’d like to<select id="cKind" name="kind"><option>Plan a visit</option><option>Share a prayer request</option><option>Ask a question</option><option>Get involved</option></select></label>
+            <label class="full" for="cMsg">Message<textarea id="cMsg" name="message" placeholder="Tell us a little more"></textarea></label>
+            <label class="full chk" for="cPriv"><input type="checkbox" id="cPriv" name="private" value="yes"> Keep this between me and the pastoral team</label>
+          </div>
+          <button class="btn btn-ink" type="submit" id="cSend">Send</button>
+          <p class="done" id="cDone" hidden></p>
+        </form>
+      </div>
+    </div>
+  </section>

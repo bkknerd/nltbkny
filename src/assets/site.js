@@ -19,7 +19,7 @@
   const post=form=>fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()}).then(r=>{if(!r.ok)throw new Error(r.status)});
   const FALLBACK='Something went wrong sending that. Call (718) 636-4938 or email newlife1476@aol.com and someone will help you.';
   const cf=$('#connectForm');
-  cf.addEventListener('submit',async e=>{e.preventDefault();const d=$('#cDone'),b=$('#cSend');
+  if(cf)cf.addEventListener('submit',async e=>{e.preventDefault();const d=$('#cDone'),b=$('#cSend');
     const name=cf.cName.value.trim(),contact=cf.cContact.value.trim();
     if(!name||!contact){say(d,'Add your name and an email or phone so we can reach you.');return}
     b.disabled=true;b.textContent='Sending…';
@@ -27,11 +27,12 @@
     catch(err){say(d,FALLBACK)}
     b.disabled=false;b.textContent='Send'});
   const nf=$('#newsForm');
-  nf.addEventListener('submit',async e=>{e.preventDefault();const v=nf.nEmail.value.trim(),d=$('#newsDone');
+  if(nf)nf.addEventListener('submit',async e=>{e.preventDefault();const v=nf.nEmail.value.trim(),d=$('#newsDone');
     if(!/\S+@\S+\.\S+/.test(v)){say(d,'Enter a valid email address to subscribe.');return}
     try{await post(nf);nf.reset();say(d,'You’re subscribed. Watch your inbox for news from New Life.')}
     catch(err){say(d,'That didn’t go through. Email newlife1476@aol.com to join the list.')}});
 
+  if($('#wVerse'))(()=>{
   // A word for today: mood → King James verse
   const WORDS={};(window.NLT&&NLT.moods||[]).forEach(m=>{WORDS[m.mood]=(m.verses||[]).map(v=>[v.ref,v.text])});
   const KEYS={anxious:'anxious worried worry stress stressed nervous anxiety panic restless tense uneasy',weary:'tired weary exhausted drained burnt burned worn sleepy fatigue rest',afraid:'afraid scared fear fearful terrified frightened',overwhelmed:'overwhelmed much pressure heavy burden drowning crushed busy',lonely:'lonely alone isolated forgotten abandoned left nobody',grieving:'grief grieving sad sorrow loss lost mourning died death crying hurt heartbroken broken',unsure:'unsure confused lost direction decision guidance unclear doubt doubting stuck',
@@ -53,6 +54,8 @@
     if(!pick){const m=matchLocal(t);pick=[m,Math.floor(Math.random()*WORDS[m].length)]}
     showWord(pick[0],pick[1]);go.textContent='( find a word )';
     if(innerWidth<=900)$('.w-card').scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})});
+
+  })();
 
   // Videos: real YouTube thumbnails, and each poster turns into the player in place
   const canEmbed=location.protocol.startsWith('http');
@@ -78,6 +81,7 @@
   $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href');if(id.length<2)return;const t=$(id);if(!t)return;e.preventDefault();
     goTo(t.getBoundingClientRect().top+scrollY-80)}));
 
+  if($('#h1'))(()=>{
   // kinetic hero type: letters thin out under the cursor, and breathe on their own when it's away
   const h1=$('#h1'),cs=[];
   h1.querySelectorAll('.l>span').forEach(sp=>{const t=sp.textContent;sp.textContent='';[...t].forEach(ch=>{const c=document.createElement('span');c.className='c';c.textContent=ch;sp.append(c);if(ch.trim())cs.push(c)})});
@@ -96,14 +100,17 @@
   setTimeout(()=>{measure();requestAnimationFrame(kin)},introOn?2600:900);
   addEventListener('resize',measure);setInterval(measure,1200);
 
+  })();
+
   // headlines rise word by word
-  const heads=$$('.w-ask h2,.sh h2,.nlcf h2,.sp h2,.attend h2,.give-h,.hello-h,.f-top h2');
+  const heads=$$('.w-ask h2,.sh h2,.sh h1,.nlcf h2,.sp h2,.at-top h1,.attend h2,.give-h,.hello-h,.f-top h2');
   heads.forEach(h=>{if(h.children.length)return;const words=h.textContent.trim().split(/\s+/);h.textContent='';
     words.forEach((w,i)=>{const o=document.createElement('span');o.className='wd';const n=document.createElement('span');n.textContent=w;n.style.transitionDelay=i*60+'ms';o.append(n);h.append(o);if(i<words.length-1)h.append(' ')})});
   if(!reduce){const hio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');hio.unobserve(e.target)}}),{rootMargin:'0px 0px -10% 0px'});
     heads.forEach(h=>{if(h.getBoundingClientRect().top>innerHeight){h.classList.add('pre');hio.observe(h)}})}
 
   // pastors: pinned scroll story
+  if($('#ptrack'))(()=>{
   const track=$('#ptrack'),items=$$('.pitem'),pnav=$$('.pnav button');let cur=0;
   let pLock=0;const setP=(i,force)=>{if(!force&&Date.now()<pLock)return;if(i===cur)return;items.forEach((it,k)=>{it.classList.toggle('on',k===i);it.classList.toggle('was',k<i)});pnav.forEach((b,k)=>b.setAttribute('aria-current',k===i));cur=i};
   const pScroll=()=>{if(innerWidth<=860)return;const r=track.getBoundingClientRect(),span=r.height-innerHeight;
@@ -111,6 +118,10 @@
     pnav.forEach((b,k)=>b.querySelector('i').style.setProperty('--f',Math.min(1,Math.max(0,p*3-k)).toFixed(3)))};
   addEventListener('scroll',pScroll,{passive:true});pScroll();
   pnav.forEach((b,k)=>b.addEventListener('click',()=>{setP(k,true);pLock=Date.now()+1700;pnav.forEach((x,j)=>x.querySelector('i').style.setProperty('--f',j<k?1:j===k?.5:0));const span=track.offsetHeight-innerHeight;goTo(track.getBoundingClientRect().top+scrollY+span*(k+.5)/3)}));
+
+    const hm=location.hash.match(/^#p(\d)$/);
+    if(hm){const k=+hm[1]-1;if(items[k])setTimeout(()=>{if(innerWidth>860){setP(k,true);pLock=Date.now()+1700;scrollTo(0,track.getBoundingClientRect().top+scrollY+(track.offsetHeight-innerHeight)*(k+.5)/3)}else items[k].scrollIntoView()},300)}
+  })();
 
   // cursor
   const cr=$('#cur');
@@ -123,9 +134,11 @@
     const mv=()=>{cx2+=(x-cx2)*.22;cy2+=(y-cy2)*.22;cr.style.transform=`translate3d(${cx2}px,${cy2}px,0)`;requestAnimationFrame(mv)};mv();
     document.addEventListener('pointerleave',()=>{x=y=-100})}
 
+  const cv=$('#rays');let sp=0;
+  if(cv)(()=>{
   // Hero: the logo's open book and rising rays, drawn as light. Book edge draws in, rays rise, dust drifts in the beams.
-  const cv=$('#rays'),ctx=cv.getContext('2d'),hero=cv.parentElement;
-  let W=0,H=0,mx=.75,my=.3,ex=.75,ey=.3,sp=0,run=true;const t0=performance.now();
+  const ctx=cv.getContext('2d'),hero=cv.parentElement;
+  let W=0,H=0,mx=.75,my=.3,ex=.75,ey=.3,run=true;const t0=performance.now();
   let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
   const RAYS=Array.from({length:21},(_,i)=>({a:3+i*(76/20)+(rnd()-.5)*2.2,w:.55+rnd()*.9+(i%4===0?.7:0),l:.62+rnd()*.5,warm:i%5===2,ph:rnd()*6.28}));
   const MOTES=Array.from({length:70},()=>({x:rnd(),y:rnd(),r:.5+rnd()*1.5,v:.004+rnd()*.012,ph:rnd()*6.28}));
@@ -171,9 +184,12 @@
   new IntersectionObserver(([e])=>{const was=run;run=e.isIntersecting;if(run&&!was&&!reduce)requestAnimationFrame(frame)}).observe(hero);
   requestAnimationFrame(frame);
 
+  })();
+
   // Scroll motion
   const foot=$('.wordmark');
-  const onScroll=()=>{const r=hero.getBoundingClientRect();sp=Math.min(1,Math.max(0,-r.top/r.height));
+  const heroEl=$('.hero');
+  const onScroll=()=>{if(heroEl){const r=heroEl.getBoundingClientRect();sp=Math.min(1,Math.max(0,-r.top/r.height))}
     if(foot&&!reduce){const fr=foot.getBoundingClientRect(),p=(innerHeight-fr.top)/(innerHeight+fr.height);foot.style.transform=`translateX(${(.5-p)*8}%)`}};
   addEventListener('scroll',onScroll,{passive:true});onScroll();
   if(!reduce&&'IntersectionObserver' in window){

@@ -1,0 +1,26 @@
+{%- set first = word.moods | first -%}{%- for m in word.moods %}{% if m.mood == word.default_mood %}{% set first = m %}{% endif %}{% endfor -%}
+  <section class="word" id="word" aria-labelledby="wordH">
+    <div class="wrap w-grid">
+      <div class="w-ask">
+        <h2 id="wordH">{{ home.word_heading }}</h2>
+        <p class="lead">{{ home.word_lead }}</p>
+        <div class="moods" role="group" aria-label="Choose a feeling">{% for m in word.moods %}<button type="button" aria-pressed="{{ 'true' if m.mood == first.mood else 'false' }}" data-m="{{ m.mood }}">{{ m.mood }}</button>{% endfor %}</div>
+        <form class="own" id="ownForm" novalidate>
+          <label class="sr" for="ownIn">Or describe how you feel</label>
+          <input id="ownIn" placeholder="or say it in your own words" maxlength="200" autocomplete="off">
+          <button class="tlink" type="submit" id="ownGo">( find a word )</button>
+        </form>
+      </div>
+      <figure class="w-card" aria-live="polite">
+        <figcaption class="w-for" id="wFor">a word for when you feel <b>{{ first.mood }}</b></figcaption>
+        <blockquote class="w-verse" id="wVerse">{{ first.verses[0].text }}</blockquote>
+        <p class="w-ref"><span id="wRef">{{ first.verses[0].ref }}</span> · {{ word.translation }}</p>
+        <div class="w-act">
+          <button class="tlink" type="button" id="wNext">( another verse )</button>
+          <button class="tlink" type="button" id="wCopy">( copy )</button>
+          <a class="tlink" id="wRead" href="https://www.biblegateway.com/passage/?search={{ first.verses[0].ref | replace(r/:.*$/, '') | urlencode }}&amp;version=KJV" target="_blank" rel="noopener">( read the chapter )</a>
+        </div>
+        <p class="w-pray">Would you like someone to pray with you? <a href="/contact/">Send us a note</a>.</p>
+      </figure>
+    </div>
+  </section>

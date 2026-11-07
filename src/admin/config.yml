@@ -67,6 +67,8 @@ collections:
           - { name: pastors_lead, label: Pastors intro, widget: text }
           - { name: attend_heading, label: Attend heading, widget: string }
           - { name: attend_lead, label: Attend intro, widget: text }
+          - { name: ministries_heading, label: Ministries page heading, widget: string }
+          - { name: ministries_lead, label: Ministries page intro, widget: text }
           - { name: hello_heading, label: Contact form heading, widget: string }
           - { name: hello_lead, label: Contact form intro, widget: text }
           - { name: in_person_text, label: "“nlt in-person” line", widget: string }

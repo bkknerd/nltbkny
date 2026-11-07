@@ -1,0 +1,15 @@
+  <section class="s fldc2" id="community" aria-labelledby="fldcH">
+    <div class="wrap">
+      <div class="f-top">
+        <div>
+          <h2 id="fldcH">{{ community.name }}</h2>
+          <p class="lead">{{ community.lead }}</p>
+        </div>
+        <a class="tlink" href="/contact/">( ask about a program )</a>
+      </div>
+      <ul class="f-list">
+        {%- for c in community.services %}
+        <li><b>{{ c.name }}</b><span>{{ c.text }}</span></li>{% endfor %}
+      </ul>
+    </div>
+  </section>

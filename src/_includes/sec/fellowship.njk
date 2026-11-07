@@ -1,0 +1,25 @@
+  <section class="s band-night" id="fellowship" aria-labelledby="nlcfH">
+    <div class="wrap nlcf">
+      <div>
+        <span class="since">{{ fellowship.established }}</span>
+        <h2 id="nlcfH">{{ fellowship.name }}</h2>
+        <p class="lead">{{ fellowship.description }}</p>
+        <div class="info">
+          <div><b>Website</b><span><a href="{{ fellowship.website }}" target="_blank" rel="noopener">{{ fellowship.website | replace("https://", "") | replace("www.", "") }}</a></span></div>
+          <div><b>Email</b><span><a href="mailto:{{ fellowship.email }}">{{ fellowship.email }}</a><button class="copy-btn" type="button" data-copy="{{ fellowship.email }}">Copy</button></span></div>
+          <div><b>Follow</b><span><a href="{{ fellowship.instagram }}" target="_blank" rel="noopener">{{ fellowship.instagram_handle }}</a> · <a href="{{ fellowship.facebook }}" target="_blank" rel="noopener">Facebook</a></span></div>
+        </div>
+      </div>
+      <div>
+        <div class="mottos">
+          {%- for m in fellowship.mottos %}
+          <blockquote>{{ m.lead }} <span>{{ m.accent }}</span></blockquote>{% endfor %}
+        </div>
+        <div class="row nl-links" style="gap:4px 28px">
+          <a class="tlink" href="/events/">( fellowship events )</a>
+          {%- if fellowship.video_url %}
+          <a class="tlink" href="{{ fellowship.video_url }}" target="_blank" rel="noopener">( {{ fellowship.video_label }} )</a>{% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
