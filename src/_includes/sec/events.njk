@@ -11,7 +11,7 @@
           <p class="pk"><span>{{ e.kicker }}</span><span>{{ e.host }}</span></p>
           <p class="pd"><b>{{ e.big or (e.start | day) }}</b><span>{{ e.small or (e.start | mon) }}</span></p>
           <div><{{ sub or "h3" }}>{{ e.title }}</{{ sub or "h3" }}><p>{{ e.description }}</p>
-          <a class="tlink" target="_blank" rel="noopener" href="{{ e.title | gcal(e.start, e.end, e.all_day, e.repeat_weekly, addr) }}">( add to calendar )</a></div>
+          <a class="tlink ulink" target="_blank" rel="noopener" href="{{ e.title | gcal(e.start, e.end, e.all_day, e.repeat_weekly, addr) }}">add to calendar</a></div>
         </article>
         {%- endif %}{% endfor %}
       </div>

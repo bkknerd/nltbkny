@@ -15,7 +15,7 @@
             <{{ sub or "h3" }}>{{ p.name }}</{{ sub or "h3" }}>
             <p class="pbio">{{ p.bio | md | safe }}</p>
             {%- if p.instagram %}
-            <a class="tlink" href="https://www.instagram.com/{{ p.instagram }}" target="_blank" rel="noopener">( @{{ p.instagram }} )</a>{% endif %}
+            <a class="tlink ulink" href="https://www.instagram.com/{{ p.instagram }}" target="_blank" rel="noopener">@{{ p.instagram }}</a>{% endif %}
           </div>
         </article>
         {%- endfor %}

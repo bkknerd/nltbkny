@@ -6,9 +6,11 @@
 <meta name="robots" content="noindex">
 <title>New Life Tabernacle · Website sign-in</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&family=Hanken+Grotesk:wght@400..700&display=swap">
+<style>
+@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:380 760;font-display:swap;src:url(/assets/fonts/source-serif-4.woff2) format("woff2")}
+@font-face{font-family:"Source Serif 4";font-style:italic;font-weight:380 760;font-display:swap;src:url(/assets/fonts/source-serif-4-italic.woff2) format("woff2")}
+@font-face{font-family:"Hanken Grotesk";font-style:normal;font-weight:300 700;font-display:swap;src:url(/assets/fonts/hanken-grotesk.woff2) format("woff2")}
+</style>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <style>
 :root{--ink:#0A0A0A;--ink-2:#5A5A5A;--bg:#fff;--surface:#F7F7F7;--rule:rgba(10,10,10,.12);--gold:#B8912F;--gold-lite:#D9B45A;--wine:#7A1D22;
@@ -28,7 +30,7 @@ a{color:inherit}
 .gate .side::after{content:"";position:absolute;left:-10%;bottom:-30%;width:120%;height:90%;background:radial-gradient(closest-side,rgba(217,180,90,.22),transparent 70%);pointer-events:none}
 .gate .brand{display:flex;align-items:center;gap:14px;font-weight:600;letter-spacing:.01em}
 .gate h1{font:400 clamp(44px,6vw,84px)/.98 var(--serif);letter-spacing:-.02em;margin:0;position:relative;z-index:1}
-.gate h1 em{font-style:italic;color:var(--gold-lite)}
+.gate h1 em{font-style:italic}
 .gate .addr{color:#A6A6A6;font-size:15px;position:relative;z-index:1}
 .gate .panel{background:var(--bg);color:var(--ink);padding:48px;display:flex;flex-direction:column;justify-content:center}
 .panel .inner{max-width:380px;width:100%;margin:0 auto}
@@ -51,7 +53,7 @@ a{color:inherit}
 .top b{font-weight:600}
 .hi{padding:56px 0 8px}
 .hi h1{font:400 clamp(36px,5vw,56px)/1.05 var(--serif);letter-spacing:-.015em;margin:0 0 10px}
-.hi h1 em{font-style:italic;color:var(--gold)}
+.hi h1 em{font-style:italic}
 .hi p{color:var(--ink-2);margin:0;max-width:56ch}
 .grp{padding:40px 0 0}
 .grp h2{font:600 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:0 0 16px}

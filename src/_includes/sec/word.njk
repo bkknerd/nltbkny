@@ -16,9 +16,9 @@
         <blockquote class="w-verse" id="wVerse">{{ first.verses[0].text }}</blockquote>
         <p class="w-ref"><span id="wRef">{{ first.verses[0].ref }}</span> · {{ word.translation }}</p>
         <div class="w-act">
-          <button class="tlink" type="button" id="wNext">( another verse )</button>
-          <button class="tlink" type="button" id="wCopy">( copy )</button>
-          <a class="tlink" id="wRead" href="https://www.biblegateway.com/passage/?search={{ first.verses[0].ref | replace(r/:.*$/, '') | urlencode }}&amp;version=KJV" target="_blank" rel="noopener">( read the chapter )</a>
+          <button class="tlink ulink" type="button" id="wNext">another verse</button>
+          <button class="tlink ulink" type="button" id="wCopy">copy</button>
+          <a class="tlink ulink" id="wRead" href="https://www.biblegateway.com/passage/?search={{ first.verses[0].ref | replace(r/:.*$/, '') | urlencode }}&amp;version=KJV" target="_blank" rel="noopener">read the chapter</a>
         </div>
         <p class="w-pray">Would you like someone to pray with you? <a href="/contact/">Send us a note</a>.</p>
       </figure>

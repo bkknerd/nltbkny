@@ -12,7 +12,7 @@
         </a>
         <div class="live">
           {%- for l in watch.links %}
-          <div class="lv"><{{ sub or "h3" }}>{{ l.title }}</{{ sub or "h3" }}><p>{{ l.text | nbsp | md | safe }}</p><a class="tlink" href="{{ l.url }}" target="_blank" rel="noopener">( {{ l.label }} )</a></div>
+          <div class="lv"><{{ sub or "h3" }}>{{ l.title }}</{{ sub or "h3" }}><p>{{ l.text | nbsp | md | safe }}</p><a class="tlink ulink" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }}</a></div>
           {%- endfor %}
         </div>
       </div>

@@ -47,7 +47,7 @@
   $$('.moods button').forEach(b=>b.addEventListener('click',()=>showWord(b.dataset.m,b.dataset.m===mood?idx+1:Math.floor(Math.random()*WORDS[b.dataset.m].length))));
   $('#wNext').addEventListener('click',()=>showWord(mood,idx+1));
   $('#wCopy').addEventListener('click',e=>{const b=e.currentTarget,t=`“${wv.textContent}” ${wr.textContent} (KJV)`;
-    try{navigator.clipboard.writeText(t).then(()=>{b.textContent='( copied )';setTimeout(()=>b.textContent='( copy )',1600)},()=>getSelection().selectAllChildren(wv))}catch(err){getSelection().selectAllChildren(wv)}});
+    try{navigator.clipboard.writeText(t).then(()=>{b.textContent='copied';setTimeout(()=>b.textContent='copy',1600)},()=>getSelection().selectAllChildren(wv))}catch(err){getSelection().selectAllChildren(wv)}});
   const matchLocal=t=>{t=t.toLowerCase();let best=null,score=0;for(const m of Object.keys(WORDS)){if(t.includes(m)){return m}}for(const [m,k] of Object.entries(KEYS)){if(!WORDS[m])continue;const sc=k.split(' ').filter(w=>t.includes(w)).length;if(sc>score){score=sc;best=m}}return best||mood};
   $('#ownForm').addEventListener('submit',async e=>{e.preventDefault();const t=$('#ownIn').value.trim();if(!t)return;const go=$('#ownGo');go.textContent='( finding… )';
     let pick=null;
