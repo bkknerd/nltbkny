@@ -60,7 +60,7 @@
   $$('.vid').forEach(v=>{const id=v.dataset.yt;v.addEventListener('click',e=>{
     if(!canEmbed)return;e.preventDefault();
     const f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
-    f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.title=v.getAttribute('aria-label');
+    f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.title=(v.querySelector('.vt b')||v).textContent.trim();
     v.classList.add('on');v.append(f)})});
 
   // ---------- Signature motion ----------

@@ -56,7 +56,7 @@ if(/(invite|recovery|confirmation|email_change)_token|access_token/.test(locatio
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
     <nav class="main" id="mainNav" aria-label="Main">
-      <a href="#word">A Word</a>
+      <a href="#word">A word</a>
       <a href="#watch">Watch</a>
       <a href="#visit">Attend</a>
       <a href="#events">Coming up</a>
@@ -115,7 +115,7 @@ if(/(invite|recovery|confirmation|email_change)_token|access_token/.test(locatio
       </div>
       <div class="wgrid">
         {%- set f = watch.featured %}
-        <a class="ph vid vp feat t-ink" data-yt="{{ f.youtube_id }}" href="https://www.youtube.com/watch?v={{ f.youtube_id }}" target="_blank" rel="noopener" aria-label="Play {{ f.title }}">
+        <a class="ph vid vp feat t-ink" data-yt="{{ f.youtube_id }}" href="https://www.youtube.com/watch?v={{ f.youtube_id }}" target="_blank" rel="noopener">
           <span class="vd">{{ f.date_label }}</span><span class="play" aria-hidden="true"><svg width="16" height="18" viewBox="0 0 24 26"><path d="M3 2 L22 13 L3 24 Z" fill="#0A0A0A"/></svg></span>
           <span class="vt"><b>{{ f.title }}</b><span>{{ f.subtitle }}</span></span>
         </a>
@@ -127,7 +127,7 @@ if(/(invite|recovery|confirmation|email_change)_token|access_token/.test(locatio
       </div>
       <div class="vrow" aria-label="More videos">
         {%- for v in watch.videos %}
-        <a class="ph vid vp t-{{ v.color or 'ink' }}" data-yt="{{ v.youtube_id }}" href="https://www.youtube.com/watch?v={{ v.youtube_id }}" target="_blank" rel="noopener" aria-label="Play {{ v.title }}">
+        <a class="ph vid vp t-{{ v.color or 'ink' }}" data-yt="{{ v.youtube_id }}" href="https://www.youtube.com/watch?v={{ v.youtube_id }}" target="_blank" rel="noopener">
           <span class="vd">{{ v.date_label }}</span><span class="play" aria-hidden="true"><svg width="16" height="18" viewBox="0 0 24 26"><path d="M3 2 L22 13 L3 24 Z" fill="#0A0A0A"/></svg></span>
           <span class="vt"><b>{{ v.title }}</b><span>{{ v.subtitle }}</span></span>
         </a>
@@ -139,7 +139,7 @@ if(/(invite|recovery|confirmation|email_change)_token|access_token/.test(locatio
   <section class="gather band-wine" aria-labelledby="gH">
     <div class="wrap">
       <div class="g-top">
-        <h2 id="gH">gatherings</h2>
+        <h2 id="gH">service times</h2>
         <div class="gx">
           <a class="tlink" target="_blank" rel="noopener" href="{{ gatherings.calendar_title | gcal(gatherings.calendar_start, gatherings.calendar_end, false, gatherings.calendar_repeat_weekly, addr) }}">( add Sunday to your calendar )</a>
           <a class="tlink" href="#visit">( get directions )</a>
@@ -340,7 +340,7 @@ if(/(invite|recovery|confirmation|email_change)_token|access_token/.test(locatio
   <div class="wrap">
     <div class="ft-grid">
       <div>
-        <h5>stay connected</h5>
+        <h2 class="ft-h">stay connected</h2>
         <p>{{ site.newsletter_text }}</p>
         <form class="news" id="newsForm" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
           <input type="hidden" name="form-name" value="newsletter">
@@ -351,12 +351,12 @@ if(/(invite|recovery|confirmation|email_change)_token|access_token/.test(locatio
         </form>
         <p id="newsDone" hidden style="margin-top:10px;color:var(--gold-lite)"></p>
       </div>
-      <div><h5>quick links</h5><ul><li><a href="#visit">Attend</a></li><li><a href="#watch">Watch</a></li><li><a href="#events">Coming up</a></li><li><a href="#give">Give</a></li></ul></div>
-      <div><h5>connect</h5><ul><li><a href="#leadership">Our pastors</a></li><li><a href="#fellowship">Covenant Fellowship</a></li><li><a href="{{ fellowship.website }}" target="_blank" rel="noopener">NLCF website</a></li><li><a href="#community">Family Life Center</a></li><li><a href="#hello">Say hello</a></li></ul></div>
-      <div><h5>socials</h5><ul><li><a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a></li><li><a href="{{ site.facebook }}" target="_blank" rel="noopener">Facebook</a></li><li><a href="{{ site.youtube }}" target="_blank" rel="noopener">YouTube</a></li><li><a href="{{ fellowship.instagram }}" target="_blank" rel="noopener">NLCF Instagram</a></li></ul></div>
+      <div><h2 class="ft-h">quick links</h2><ul><li><a href="#visit">Attend</a></li><li><a href="#watch">Watch</a></li><li><a href="#events">Coming up</a></li><li><a href="#give">Give</a></li></ul></div>
+      <div><h2 class="ft-h">connect</h2><ul><li><a href="#leadership">Our pastors</a></li><li><a href="#fellowship">Covenant Fellowship</a></li><li><a href="{{ fellowship.website }}" target="_blank" rel="noopener">NLCF website</a></li><li><a href="#community">Family Life Center</a></li><li><a href="#hello">Say hello</a></li></ul></div>
+      <div><h2 class="ft-h">socials</h2><ul><li><a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a></li><li><a href="{{ site.facebook }}" target="_blank" rel="noopener">Facebook</a></li><li><a href="{{ site.youtube }}" target="_blank" rel="noopener">YouTube</a></li><li><a href="{{ fellowship.instagram }}" target="_blank" rel="noopener">NLCF Instagram</a></li></ul></div>
     </div>
     <p class="wordmark" aria-hidden="true">nltbkny</p>
-    <div class="legal"><span>© {{ "" | year }} {{ site.name }}, Inc.</span><span>{{ addr }} · {{ site.phone }}</span><a class="staff" href="/admin/">Staff sign in</a></div>
+    <div class="legal"><span>© {{ "" | year }} {{ site.name }}, Inc.</span><span>{{ addr }} · {{ site.phone }}</span><span class="legal-r"><a class="staff" href="/admin/">Staff sign in</a><a class="credit" href="https://draftandlogic.com" target="_blank" rel="noopener">Site by Draft &amp; Logic</a></span></div>
   </div>
 </footer>
 
